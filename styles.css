@@ -3,12 +3,14 @@
   padding: 0;
 }
 
-body {
-  background-color: black;
+header {
+  background-color: #6c6cd8;
   color: white;
+  padding: 20px 40px;
 }
+
 .container {
-  margin: 20px;
+  margin: 30px;
   display: grid;
   grid-template-columns: 100px 1fr;
 }
@@ -44,9 +46,35 @@ body {
 }
 
 .boxes .numbers * {
-  background-color: black;
+  background-color: white;
+}
+
+.taks {
+  margin: 40px 35px;
+}
+
+.color-input {
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 6px;
+}
+
+.name-input {
+  height: 20px;
+}
+
+button {
+  cursor: pointer;
+  padding: 4px;
+  width: 80px;
+  border: none;
+  background-color: #6c6cd8;
+  color: white;
 }
 
 .color-red {
-  color: red;
+  border: #6c6cd8 solid;
 }
