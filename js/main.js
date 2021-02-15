@@ -1,10 +1,12 @@
 import pointTime from "./point.js";
-import  newTask from "./newTask.js";
-import  {colorSelect} from "./newTask.js";
+import  { newTask , deleteTask} from "./newAndDeleteTask.js";
+import  {colorSelect} from "./newAndDeleteTask.js";
 
 
 document.addEventListener("DOMContentLoaded", e => {
-    newTask(".add-btn", ".delete-btn")
+    newTask(".add-btn");
+    deleteTask(".delete-btn");
+
 });
 
 

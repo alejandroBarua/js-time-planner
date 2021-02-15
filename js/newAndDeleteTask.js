@@ -2,11 +2,12 @@
 export let colorSelect;
 
 
-export default function newTask(addBtn, deleteBtn) {
+export function newTask(addBtn, deleteBtn) {
     
     document.addEventListener("click", e => {
 
          if(e.target.matches(addBtn)){
+
 
             let color = document.querySelector(".color-input").value;
             let text = document.querySelector(".name-input").value;
@@ -18,13 +19,11 @@ export default function newTask(addBtn, deleteBtn) {
 
             $div.style.backgroundColor = color;
             colorSelector($div);
-            $div.addEventListener("click", () => {
-                console.log('select');
-                console.log(colorSelect);
-                colorSelector($div)});
+            $div.addEventListener("click", () => colorSelector($div));
 
             $button.textContent = "x";
             $button.classList.add("delete-btn");
+            $button.classList.add(`${text}`);
             $p.textContent = text;
 
             $div.appendChild($button);
@@ -34,14 +33,30 @@ export default function newTask(addBtn, deleteBtn) {
 
         }
 
-         if(e.target.matches(deleteBtn)){
-         
-            console.log(deleteBtn);
-        
-        
-        }
-    
     });
+}
+
+
+export function deleteTask(deleteBtn) {
+
+    document.addEventListener("click", e => {
+
+        if(e.target.matches(deleteBtn)){
+            
+            let $divDelete = document.querySelector(`.${e.target.classList[1]}`).parentNode;
+            let $divFatherDelete = $divDelete.parentNode;
+            
+            if($divDelete.classList.contains("select-task")){
+                
+                let $divNext = $divDelete.nextElementSibling;
+                if($divNext != null) colorSelector($divNext);
+            }
+
+            $divFatherDelete.removeChild($divDelete);
+            e.stopPropagation();
+
+        }
+    }, true);
 }
 
 function colorSelector($div) {
