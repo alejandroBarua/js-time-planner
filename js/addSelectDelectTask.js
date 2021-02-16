@@ -1,8 +1,6 @@
-
 export let colorSelect;
 
-
-export function newTask(addBtn, deleteBtn) {
+export function newTask(addBtn) {
     
     document.addEventListener("click", e => {
 
@@ -57,6 +55,13 @@ export function deleteTask(deleteBtn) {
 
         }
     }, true);
+}
+
+export function EventDefault() {
+    
+    let $divs = document.querySelectorAll(".list-task div");
+    $divs.forEach(el => el.addEventListener("click", () => colorSelector(el)));
+    
 }
 
 function colorSelector($div) {

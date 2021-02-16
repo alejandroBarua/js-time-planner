@@ -7,33 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my tasks</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="time.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 
 <body>
 
     <header>
+        <img src="time.png" alt="time">
         <h1>Time Planner</h1>
     </header>
 
     <div class="taks">
         <div>
             <input type="color" class="color-input" value="#58d545">
-            <input type="text" class="name-input" placeholder="name task" value="hello">
+            <input type="text" class="name-input" placeholder="name task">
             <button class="add-btn">Add</button>
         </div>
 
         <div class="list-task">
 
-            <!--   <div>
-                <button class="delete-btn">x</button>
+            <div class="select-task div-sleep">
+                <button class="delete-btn sleep">x</button>
                 <p>sleep</p>
             </div>
 
-            <div>
-                <button class="delete-btn">x</button>
+            <div class="div-work">
+                <button class="delete-btn work">x</button>
                 <p>work</p>
-            </div> -->
+            </div>
+
+            <div class="div-free">
+                <button class="delete-btn free">x</button>
+                <p>free</p>
+            </div>
+
+            <div class="div-study">
+                <button class="delete-btn study">x</button>
+                <p>study</p>
+            </div>
+
+            <div class="div-gym">
+                <button class="delete-btn gym">x</button>
+                <p>gym</p>
+            </div>
 
         </div>
 
