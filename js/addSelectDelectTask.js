@@ -58,10 +58,55 @@ export function deleteTask(deleteBtn) {
 }
 
 export function EventDefault() {
+
+    const taskContent = [
+        {
+            name: "sleep",
+            color:"rgb(8, 178, 201)"
+        },
+        {
+            name: "work",
+            color:"rgb(211, 120, 0)"
+        },
+        {
+            name: "free",
+            color:"rgb(158, 0, 158)"
+        },
+        {
+            name: "study",
+            color:"rgb(219, 235, 4)"
+        },
+        {
+            name: "gym",    
+            color: "green"
+        }
+    ];
+
+    let $fragment = document.createDocumentFragment(),
+        $listTask = document.querySelector(".list-task");
+
+    taskContent.forEach(el => {
+
+        let $div = document.createElement("div"),
+            $button = document.createElement("button"),
+            $p = document.createElement("p");
+        
+        $div.style.backgroundColor = el.color;
+        $div.addEventListener("click", () => colorSelector($div));
+
+        $button.textContent = "x";
+        $button.classList.add("delete-btn");
+        $button.classList.add(`${el.name}`);
+        $p.textContent = el.name;
+
+        $div.appendChild($button);
+        $div.appendChild($p);
+        $fragment.appendChild($div);
+    });
+
     
-    let $divs = document.querySelectorAll(".list-task div");
-    $divs.forEach(el => el.addEventListener("click", () => colorSelector(el)));
-    
+    $listTask.appendChild($fragment);
+    colorSelector($listTask.firstElementChild);
 }
 
 function colorSelector($div) {
