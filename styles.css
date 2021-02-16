@@ -124,24 +124,6 @@ header * {
   outline: 2px solid #6c6cd8;
 }
 
-/* ******** default ******** */
-
-.div-sleep {
-  background-color: rgb(8, 178, 201);
-}
-
-.div-work {
-  background-color: rgb(211, 120, 0);
-}
-
-.div-free {
-  background-color: rgb(158, 0, 158);
-}
-
-.div-study {
-  background-color: rgb(219, 235, 4);
-}
-
-.div-gym {
-  background-color: green;
+.color-red {
+  outline: 1px solid red;
 }
