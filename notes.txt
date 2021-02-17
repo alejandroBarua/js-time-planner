@@ -1,0 +1,5 @@
+- cuando borre una tarea se debe de borrar lo que pinte con esta.
+- crear atajo para pintar en rectangulo.
+- ¿cuantas horas dedicas a cada tarea? ¿por dia? ¿por semana?
+- me gustaria eliminar ese parpadeo al cambiar de hora pero no de dia o de dia pero no de hora.
+- agregar un titulo con lo que deberias estar haciendo.

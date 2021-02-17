@@ -7,9 +7,9 @@ export default function addTask(addBtn) {
         const $input = document.querySelector(".name-input");
         let text = $input.value;
 
-         if(e.target.matches(addBtn) && !$input.classList.contains("color-red")){
+         if(e.target.matches(addBtn)){
 
-            if(text != ""){
+            if(text != "" && !$input.classList.contains("color-red")){
                 
                 let color = document.querySelector(".color-input").value;
 
@@ -35,9 +35,9 @@ export default function addTask(addBtn) {
             }
             else{
                 $input.classList.add("color-red");
-            }
-            
-        }
+            }    
 
+            $input.focus();
+        }
     });
 }
