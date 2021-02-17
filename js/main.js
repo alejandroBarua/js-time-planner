@@ -1,7 +1,7 @@
 import pointTime from "./point.js";
-import addTask from "./addTask.js";
-import deleteTask from "./deleteTask.js";
-import defaultTask from "./defaultTask.js";
+import addTask from "./add.js";
+import deleteTask from "./delete.js";
+import defaultTask from "./default.js";
 import validation from "./validation.js";
 
 export function colorSelector($div) {

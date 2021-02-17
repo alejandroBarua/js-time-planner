@@ -39,7 +39,6 @@ export default function defaultTask() {
 
         $button.textContent = "x";
         $button.classList.add("delete-btn");
-        $button.classList.add(`${el.name}`);
         $p.textContent = el.name;
 
         $div.appendChild($button);

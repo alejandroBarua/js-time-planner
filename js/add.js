@@ -24,7 +24,6 @@ export default function addTask(addBtn) {
 
                 $button.textContent = "x";
                 $button.classList.add("delete-btn");
-                $button.classList.add(`${text.replace(/ /g, "")}`);
                 $p.textContent = text;
 
                 $div.appendChild($button);

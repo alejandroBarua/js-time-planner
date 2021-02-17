@@ -6,13 +6,24 @@ export default function deleteTask(deleteBtn) {
 
         if(e.target.matches(deleteBtn)){
             
-            let $divDelete = document.querySelector(`.${e.target.classList[1]}`).parentNode;
+            let $divDelete = e.target.parentNode;
             let $divFatherDelete = $divDelete.parentNode;
             
             if($divDelete.classList.contains("select-task")){
                 
                 let $divNext = $divDelete.nextElementSibling;
-                if($divNext != null) colorSelector($divNext);
+
+                if($divNext != null) {
+                    colorSelector($divNext);
+                }
+                else{
+                    let $divPrevious = $divDelete.previousElementSibling;
+                    
+                    if($divPrevious != null){
+                        colorSelector($divPrevious);
+                    }
+                }
+                
             }
 
             $divFatherDelete.removeChild($divDelete);
