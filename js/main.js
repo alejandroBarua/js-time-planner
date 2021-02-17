@@ -1,21 +1,22 @@
 import pointTime from "./point.js";
-import  { newTask , deleteTask, EventDefault} from "./addSelectDelectTask.js";
-import  {colorSelect} from "./addSelectDelectTask.js";
+import addTask from "./addTask.js";
+import deleteTask from "./deleteTask.js";
+import defaultTask from "./defaultTask.js";
 import validation from "./validation.js";
 
+export function colorSelector($div) {
+    
+    let $divPrev = document.querySelector(".select-task");
+    if($divPrev != null) $divPrev.classList.remove("select-task");
+                
+    $div.classList.add("select-task");
+}
+
 document.addEventListener("DOMContentLoaded", e => {
-    newTask(".add-btn");
+    addTask(".add-btn");
     deleteTask(".delete-btn");
     validation();
 });
 
-
 pointTime();
-EventDefault();
-
-
-
-/* setInterval(() => {
-    console.log(colorSelect);
-    
-}, 2000); */
+defaultTask();
