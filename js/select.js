@@ -26,16 +26,20 @@ export default function selectBlock() {
         el.addEventListener("click", e => {
 
             let $task = document.querySelector(".select-task");
+            let $block = e.target;
             
             if($task != null){
                 let color = $task.style.backgroundColor;
-
+                
+                $block.classList.remove(`${$block.classList[1]}`);
+                
                 if(el.style.backgroundColor == color){
-
+                    
                     el.style.backgroundColor = "rgb(219, 216, 216)";
                 }
                 else{
                     el.style.backgroundColor = color;
+                    $block.classList.add(`${$task.children[1].textContent.replace(/ /g, "")}`);
                 }
             }
         });

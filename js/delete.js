@@ -28,7 +28,16 @@ export default function deleteTask(deleteBtn) {
 
             $divFatherDelete.removeChild($divDelete);
             e.stopPropagation();
+            
+            let nameStask = $divDelete.children[1].textContent.replace(/ /g, "");
+            let $blocks = document.querySelectorAll(`.${nameStask}`);
 
+            if($blocks.length != 0){
+                $blocks.forEach(el => {
+                    el.classList.remove(nameStask);
+                    el.style.background = "rgb(219, 216, 216)";
+                });
+            }
         }
     }, true);
 }
