@@ -49,24 +49,24 @@ header * {
   padding: 6px;
 }
 
-.boxes {
+.container-blocks {
   text-align: center;
   display: grid;
   grid-gap: 2px;
   grid-template-rows: repeat(8, minmax(30px, 1fr));
 }
 
-.boxes > * {
+.container-blocks > * {
   display: grid;
   grid-gap: 2px;
   grid-template-columns: repeat(24, 1fr);
 }
 
-.boxes div div {
+.container-blocks div div {
   background-color: rgb(219, 216, 216);
 }
 
-.boxes .numbers * {
+.container-blocks .numbers * {
   background-color: white;
 }
 
@@ -135,4 +135,12 @@ header * {
 
 .color-gray {
   color: gray;
+}
+
+.now {
+  margin-top: 40px;
+  padding: 15px;
+  height: 30px;
+  text-align: center;
+  background-color: rgb(245, 243, 243);
 }

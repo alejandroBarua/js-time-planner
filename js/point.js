@@ -7,11 +7,25 @@ export default function pointTime() {
     
         let day = numbeToDay(date.getDay());
 
-        let $box = document.querySelector(`.${day}${date.getHours()}`);
-        $box.classList.add("point");
+        let $block = document.querySelector(`.${day}${date.getHours()}`);
+        $block.classList.add("point");
 
-        let $boxAnt = document.querySelector(`.${day}${date.getHours()-1}`);
-        $boxAnt.classList.remove("point");
+        if($block.classList.length == 3){
+
+            if($block.classList[1] != "point"){
+                
+                document.querySelector(".now h2").textContent = $block.classList[1];
+            }
+            else{
+                document.querySelector(".now h2").textContent = $block.classList[2];
+            }
+        }
+        else{
+            document.querySelector(".now h2").textContent = "";
+        }
+
+        let $blockAnt = document.querySelector(`.${day}${date.getHours()-1}`);
+        $blockAnt.classList.remove("point");
     
     }, 1000);
 }

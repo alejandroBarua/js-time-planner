@@ -1,7 +1,6 @@
 export default function selectBlock() {
  
     let $blocks = document.querySelectorAll(".blocks div");
-    //console.log($blocks);
 
     $blocks.forEach(el => {
 
@@ -12,7 +11,6 @@ export default function selectBlock() {
         let $number = document.querySelector(`.id${number}`);
 
         el.addEventListener("mouseover", e => {
-
             $day.classList.add("color-gray");
             $number.classList.add("color-gray");
         });
@@ -31,7 +29,15 @@ export default function selectBlock() {
             if($task != null){
                 let color = $task.style.backgroundColor;
                 
-                $block.classList.remove(`${$block.classList[1]}`);
+                 if($block.classList.length == 3){
+                    if($block.classList[1] != "point"){
+                
+                        $block.classList.remove(`${$block.classList[1]}`);
+                    }
+                    else{
+                        $block.classList.remove(`${$block.classList[2]}`);
+                    }
+                }
                 
                 if(el.style.backgroundColor == color){
                     
