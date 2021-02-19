@@ -36,11 +36,6 @@ header * {
   grid-template-columns: 120px 1fr;
 }
 
-.days {
-  position: relative;
-  top: 35px;
-}
-
 .days ul {
   list-style: none;
 }
@@ -159,4 +154,15 @@ header * {
   height: 15px;
   cursor: pointer;
   margin: 3px;
+}
+
+.trick {
+  background-color: #a2a2f7;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.select-trick {
+  background-color: #6c6cd8;
 }

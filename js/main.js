@@ -5,6 +5,7 @@ import defaultTask from "./defaultStask.js";
 import validation from "./validation.js";
 import selectBlock from "./select.js";
 import defaultColors from "./defaultColors.js";
+import trick from "./trick.js";
 
 export function colorSelector($div) {
     
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", e => {
     validation();
     selectBlock();
     defaultColors();
+    trick(".trick");
 });
 
 pointTime();
