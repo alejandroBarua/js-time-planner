@@ -150,7 +150,7 @@ header * {
   margin-top: 10px;
   width: 225px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .colors div {
@@ -158,4 +158,5 @@ header * {
   width: 15px;
   height: 15px;
   cursor: pointer;
+  margin: 3px;
 }

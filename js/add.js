@@ -11,7 +11,25 @@ export default function addTask(addBtn) {
 
             if(text != "" && !$input.classList.contains("color-red")){
                 
-                let color = document.querySelector(".color-input").value;
+                let $inputColor = document.querySelector(".color-input");
+                let color = $inputColor.value;
+                
+                let $divColors = document.querySelector(".colors");
+                const $colors = document.querySelectorAll(".colors div")
+
+                $colors.forEach((el, index) => {
+                    
+                    if(el.style.backgroundColor == hexToRgb(color.slice(1, 7))){
+                        $divColors.removeChild($divColors.children[index]);
+
+                        if($colors.length != 1) $inputColor.value = rgbToHex($divColors.children[0].style.backgroundColor);
+                        
+                    }
+                });
+                
+                
+                
+
 
                 let $list = document.querySelector(".list-task"),
                 $div = document.createElement("div"),
@@ -40,4 +58,24 @@ export default function addTask(addBtn) {
             $input.focus();
         }
     });
+}
+
+function hexToRgb(hex) {
+    let bigint = parseInt(hex, 16);
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function rgbToHex(rgb) {
+
+    rgb = rgb.slice(4, ).split(",");
+
+    let r = parseInt(rgb[0]),
+        g = parseInt(rgb[1]),
+        b = parseInt(rgb[2]);
+
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
