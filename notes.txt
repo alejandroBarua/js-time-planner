@@ -1,9 +1,10 @@
-- crear atajo para pintar en rectangulo.
-- agregar un titulo con lo que deberias estar haciendo.
 - ¿cuantas horas dedicas a cada tarea? ¿por dia? ¿por semana?
-- me gustaria eliminar ese parpadeo al cambiar de hora pero no de dia o de dia pero no de hora.
-- imaginate si le pasas un archivo JSON y este crea automaticamente tus tareas.
-- imaginate si le pasas el nombre el dia y la hora y eljes un color y automaticamente te pinta las horas.
-- agregar una plantilla de colores para elejir.
 - poder editar el color de una tarea y que automaticamente se cambie el color de los bloques asociados a ella
 - hacerlo responsivo
+
+atajos:
+- crear atajo para pintar en rectangulo.
+- imaginate si le pasas un archivo JSON y este crea automaticamente tus tareas.
+- imaginate si le pasas el nombre el dia y la hora y eljes un color y automaticamente te pinta las horas.
+
+- me gustaria eliminar ese parpadeo al cambiar de hora pero no de dia o de dia pero no de hora.

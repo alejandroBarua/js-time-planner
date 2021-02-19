@@ -104,13 +104,14 @@ header * {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
-  margin-top: 50px;
+  margin-top: 40px;
   text-align: center;
   color: white;
   font-weight: bold;
 }
 
 .list-task div {
+  cursor: pointer;
   padding: 10px;
 }
 
@@ -138,9 +139,23 @@ header * {
 }
 
 .now {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 15px;
-  height: 30px;
+  height: 25px;
   text-align: center;
   background-color: rgb(245, 243, 243);
+}
+
+.colors {
+  margin-top: 10px;
+  width: 225px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.colors div {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }

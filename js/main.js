@@ -1,9 +1,10 @@
 import pointTime from "./point.js";
 import addTask from "./add.js";
 import deleteTask from "./delete.js";
-import defaultTask from "./default.js";
+import defaultTask from "./defaultStask.js";
 import validation from "./validation.js";
 import selectBlock from "./select.js";
+import defaultColors from "./defaultColors.js";
 
 export function colorSelector($div) {
     
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", e => {
     deleteTask(".delete-btn");
     validation();
     selectBlock();
+    defaultColors();
 });
 
 pointTime();
