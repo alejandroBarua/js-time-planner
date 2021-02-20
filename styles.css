@@ -129,8 +129,8 @@ header * {
   outline: 1px solid red;
 }
 
-.color-gray {
-  color: gray;
+.color-blue {
+  color: #6c6cd8;
 }
 
 .now {

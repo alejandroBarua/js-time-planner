@@ -27,10 +27,6 @@ export default function addTask(addBtn) {
                     }
                 });
                 
-                
-                
-
-
                 let $list = document.querySelector(".list-task"),
                 $div = document.createElement("div"),
                 $button = document.createElement("button"),

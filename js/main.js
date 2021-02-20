@@ -13,6 +13,14 @@ export function colorSelector($div) {
     if($divPrev != null) $divPrev.classList.remove("select-task");
                 
     $div.classList.add("select-task");
+
+    let $first = document.querySelector(".first");
+    if($first != null){
+
+        $first.style.backgroundColor = "rgb(219, 216, 216)";
+        $first.classList.remove("first");
+
+    }
 }
 
 document.addEventListener("DOMContentLoaded", e => {
@@ -28,12 +36,3 @@ pointTime();
 defaultTask();
 const $input = document.querySelector(".name-input");
 $input.focus();
-
-/* setInterval(() => {
-    let $task = document.querySelector(".select-task");
-    console.log($task)
-    if($task != null){
-
-        console.log($task.style.backgroundColor); 
-    }
-}, 1000); */
