@@ -1,10 +1,6 @@
+- hacer un boton para volver un paso atras
 - imaginate si le pasas el nombre el dia y la hora y eljes un color y automaticamente te pinta las horas.
 - ¿cuantas horas dedicas a cada tarea? ¿por dia? ¿por semana?
 - poder editar el color de una tarea y que automaticamente se cambie el color de los bloques asociados a ella
 - hacerlo responsivo
-
-
-
-
-
-        
+- boton de para volver atras
