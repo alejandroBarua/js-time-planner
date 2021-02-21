@@ -1,3 +1,5 @@
+export let $history = null;
+
 export default function selectBlock() {
  
     let $blocks = document.querySelectorAll(".blocks div");
@@ -74,71 +76,75 @@ export default function selectBlock() {
                 if($first != null){
 
                     if($first.style.backgroundColor != "rgb(219, 216, 216)"){
-                            let dayFirst = dayToNumber($first.classList[0].slice(0,3));
-                    let numberFirst = parseInt($first.classList[0].slice(3,5));
+                        
+                        let dayFirst = dayToNumber($first.classList[0].slice(0,3));
+                        let numberFirst = parseInt($first.classList[0].slice(3,5));
 
-                    let daySecond = dayToNumber($block.classList[0].slice(0,3));
-                    let numberSecond = parseInt($block.classList[0].slice(3,5));
+                        let daySecond = dayToNumber($block.classList[0].slice(0,3));
+                        let numberSecond = parseInt($block.classList[0].slice(3,5));
 
-                    if(dayFirst > daySecond){
-                        let a = daySecond;
-                        daySecond = dayFirst;
-                        dayFirst = a;
-                    }
-                    if(numberFirst > numberSecond){
-                        let a = numberSecond;
-                        numberSecond = numberFirst;
-                        numberFirst = a;
-                    }
+                        if(dayFirst > daySecond){
+                            let a = daySecond;
+                            daySecond = dayFirst;
+                            dayFirst = a;
+                        }
+                        if(numberFirst > numberSecond){
+                            let a = numberSecond;
+                            numberSecond = numberFirst;
+                            numberFirst = a;
+                        }
 
-                    for(let i= dayFirst; i <= daySecond; i++){
+                        for(let i= dayFirst; i <= daySecond; i++){
 
-                        for(let j = numberFirst; j <= numberSecond; j++){
+                            for(let j = numberFirst; j <= numberSecond; j++){
 
-                            let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                                let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
                             
-                            if($first != $blockTrick){ 
-                                $blockTrick.style.backgroundColor= "rgb(219, 216, 216)";
+                                if($first != $blockTrick){ 
+                                    $blockTrick.style.backgroundColor= "rgb(219, 216, 216)";
                                 
-                                if($blockTrick.classList.length == 3){
-                                    if($blockTrick.classList[1] != "point"){
+                                    if($blockTrick.classList.length == 3){
+                                        
+                                        if($blockTrick.classList[1] != "point"){
                                     
-                                        $blockTrick.classList.remove(`${$blockTrick.classList[1]}`);
+                                         $blockTrick.classList.remove(`${$blockTrick.classList[1]}`);
+                                        }
+                                        else{
+                                            $blockTrick.classList.remove(`${$blockTrick.classList[2]}`);
+                                        }
                                     }
-                                    else{
-                                        $blockTrick.classList.remove(`${$blockTrick.classList[2]}`);
-                                    }
-                                }
 
-                                if($blockTrick.classList.length == 2 && !$blockTrick.classList.contains("point")){
-                                    $blockTrick.classList.remove(`${$blockTrick.classList[1]}`);
-                                }        
-                        }
+                                    if($blockTrick.classList.length == 2 && !$blockTrick.classList.contains("point")){
+                                        $blockTrick.classList.remove(`${$blockTrick.classList[1]}`);
+                                    }        
+                                }
                             
+                            }
                         }
-                    }
                     }
                     else{
                         $first.classList.remove("first");
                     }
-
-                    
-                        
                 }
             }
 
         });
 
         el.addEventListener("click", e => {
-
             
             let $block = e.target;
-                    
-            
             let $task = document.querySelector(".select-task");
+            
             if($task != null){
 
-              let color = $task.style.backgroundColor;
+                let $trick = document.querySelector(".trick");
+                if($trick.classList.contains("select-trick")){
+                    let $first = document.querySelector(".first");
+                    if($first == null) $history = document.querySelectorAll(".blocks div");
+                }
+            
+
+                let color = $task.style.backgroundColor;
                 
                 if($block.classList.length == 3){
                     if($block.classList[1] != "point"){
@@ -163,14 +169,13 @@ export default function selectBlock() {
                     $block.classList.add(`${$task.children[1].textContent.replace(/ /g, "")}`);
                 }
                 
-                let $trick = document.querySelector(".trick");
 
                 if($trick.classList.contains("select-trick")){
-
+    
                     let $first = document.querySelector(".first");
                     if($first == null){
                         
-                        $block.classList.add("first");
+                        $block.classList.add("first");            
                     }
                     else{
                         
@@ -216,6 +221,8 @@ export default function selectBlock() {
                             }
                         }
                         $first.classList.remove("first");
+                        let $back = document.querySelector(".back");
+                        $back.classList.remove("back-none");
                     }
 
                 }

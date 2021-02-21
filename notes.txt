@@ -4,3 +4,7 @@
 - poder editar el color de una tarea y que automaticamente se cambie el color de los bloques asociados a ella
 - hacerlo responsivo
 - boton de para volver atras
+
+resolver:
+- si borro una tarea que tiene un color de la paleta de colores, ese color tiene que volver a la paleta
+- si el nombre de una tarea tiene mas de una palabra, cuando es hora de hacerla se deben mostrar separadas

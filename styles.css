@@ -166,10 +166,14 @@ header * {
   padding: 5px;
 }
 
-.trick img {
+.back {
   position: relative;
   right: 10px;
   width: 20px;
+}
+
+.back-none {
+  display: none;
 }
 
 .select-trick {

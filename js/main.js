@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", e => {
     validation();
     selectBlock();
     defaultColors();
-    trick(".trick");
+    trick();
 });
 
 pointTime();
