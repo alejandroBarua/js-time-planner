@@ -43,6 +43,7 @@ export default function addTask(addBtn) {
                 $p.textContent = text;
                 $div.classList.add(text.replace(/ /g, ""));
                 $img.setAttribute("src", "images/colors.png");
+                $img.classList.add("edit-btn");
 
                 $divBtn.appendChild($button);
                 $divBtn.appendChild($img);

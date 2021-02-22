@@ -134,7 +134,7 @@ export default function selectBlock() {
             
             let $block = e.target;
             let $task = document.querySelector(".select-task");
-            
+
             if($task != null){
 
                 let $trick = document.querySelector(".trick");
@@ -177,7 +177,7 @@ export default function selectBlock() {
                 }
                 else{
                     el.style.backgroundColor = color;
-                    $block.classList.add(`${$task.children[1].textContent.replace(/ /g, "")}`);
+                    $block.classList.add(`${$task.children[0].textContent.replace(/ /g, "")}`);
                 }
                 
 
@@ -227,7 +227,7 @@ export default function selectBlock() {
                                     $blockTrick.classList.remove(`${$blockTrick.classList[1]}`);
                                 } 
 
-                                $blockTrick.classList.add(`${$task.children[1].textContent.replace(/ /g, "")}`);
+                                $blockTrick.classList.add(`${$task.children[0].textContent.replace(/ /g, "")}`);
                                 $blockTrick.style.backgroundColor = $first.style.backgroundColor;
                             }
                         }

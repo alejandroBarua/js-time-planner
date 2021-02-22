@@ -40,6 +40,7 @@ export default function defaultTask() {
         $button.classList.add("delete-btn");
         $p.textContent = el.name;
         $img.setAttribute("src", "images/colors.png");
+        $img.classList.add("edit-btn");
 
         $divBtn.appendChild($button);
         $divBtn.appendChild($img);

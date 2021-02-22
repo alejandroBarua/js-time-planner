@@ -6,6 +6,7 @@ import validation from "./validation.js";
 import selectBlock from "./select.js";
 import defaultColors from "./defaultColors.js";
 import trick from "./trick.js";
+import edit from "./edit.js";
 
 export function colorSelector($div) {
     
@@ -26,13 +27,14 @@ export function colorSelector($div) {
 document.addEventListener("DOMContentLoaded", e => {
     addTask(".add-btn");
     deleteTask(".delete-btn");
+    edit(".edit-btn");
     validation();
     selectBlock();
     defaultColors();
     trick();
 });
 
-//pointTime();
+pointTime();
 defaultTask();
 const $input = document.querySelector(".name-input");
 $input.focus();

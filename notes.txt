@@ -3,3 +3,4 @@
 - hacerlo responsivo
 
 resolver:
+- si borro una tarea que tiene un color de la paleta de colores, este color debe volver a la paleta
