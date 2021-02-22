@@ -13,11 +13,14 @@ export default function pointTime() {
         if($block.classList.length == 3){
 
             if($block.classList[1] != "point"){
-                
-                document.querySelector(".now h2").textContent = $block.classList[1];
+                let $div = document.querySelector(`.${$block.classList[1]} p`);
+                let text = $div.textContent;
+                document.querySelector(".now h2").textContent = text;
             }
             else{
-                document.querySelector(".now h2").textContent = $block.classList[2];
+                let $div = document.querySelector(`.${$block.classList[2]} p`);
+                let text = $div.textContent;
+                document.querySelector(".now h2").textContent = text;
             }
         }
         else{
