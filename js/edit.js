@@ -15,7 +15,10 @@ export default function edit(editBtn) {
             
             $input.value = text;
             $color.value = rgbToHex(color);
-            $add.textContent = "ok";
+            $add.textContent = "Ok";
+
+            $task.classList.add("edit");
+            $input.focus();
         }
     }, true);
 }

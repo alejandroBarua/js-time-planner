@@ -26,32 +26,66 @@ export default function addTask(addBtn) {
                         
                     }
                 });
+
+                let $add = e.target;
                 
-                let $list = document.querySelector(".list-task"),
-                $div = document.createElement("div"),
-                $button = document.createElement("button"),
-                $divBtn = document.createElement("div"),
-                $img = document.createElement("img"),
-                $p = document.createElement("p");
+                if($add.textContent == "Ok"){
+                    
+                    let $task = document.querySelector(".edit");
+                    $task.children[0].textContent= text;
+                    $task.style.backgroundColor = color;
+                    let textAnt = $task.classList[0];
+                    $task.classList.remove(textAnt);
+                    text = text.replace(/ /g, "");
+                    $task.classList.add(text);
+                    $task.classList.remove("edit");
+                    $add.textContent = "Add";
 
-                $div.style.backgroundColor = color;
-                colorSelector($div);
-                $div.addEventListener("click", () => colorSelector($div));
-                
-                $button.textContent = "x";
-                $button.classList.add("delete-btn");
-                $p.textContent = text;
-                $div.classList.add(text.replace(/ /g, ""));
-                $img.setAttribute("src", "images/colors.png");
-                $img.classList.add("edit-btn");
+                    let $blocks = document.querySelectorAll(".blocks div"); 
+                    let history = new Array();
+                    
+                    $blocks.forEach(el => {
+                            
+                        if(el.classList.contains(textAnt)){
+                            history.push(el.classList[0]);
+                        }
+                    });
+                    
+                    history.forEach(el => {
+                        let $block = document.querySelector(`.${el}`);
+                        $block.classList.remove(textAnt);
+                        $block.classList.add(text);
+                        $block.style.backgroundColor = color;
+                    });
+                }
+                else{
 
-                $divBtn.appendChild($button);
-                $divBtn.appendChild($img);
-                $div.appendChild($p);
-                $div.appendChild($divBtn);
-
-                $list.prepend($div);
-
+                    let $list = document.querySelector(".list-task"),
+                    $div = document.createElement("div"),
+                    $button = document.createElement("button"),
+                    $divBtn = document.createElement("div"),
+                    $img = document.createElement("img"),
+                    $p = document.createElement("p");
+    
+                    $div.style.backgroundColor = color;
+                    colorSelector($div);
+                    $div.addEventListener("click", () => colorSelector($div));
+                    
+                    $button.textContent = "x";
+                    $button.classList.add("delete-btn");
+                    $p.textContent = text;
+                    $div.classList.add(text.replace(/ /g, ""));
+                    $img.setAttribute("src", "images/colors.png");
+                    $img.classList.add("edit-btn");
+    
+                    $divBtn.appendChild($button);
+                    $divBtn.appendChild($img);
+                    $div.appendChild($p);
+                    $div.appendChild($divBtn);
+    
+                    $list.prepend($div);
+                }
+    
                 $input.value = "";
             }
             else{
