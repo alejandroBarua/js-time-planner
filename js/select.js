@@ -1,4 +1,4 @@
-export let $history = null;
+export let history = new Array();
 
 export default function selectBlock() {
  
@@ -140,7 +140,18 @@ export default function selectBlock() {
                 let $trick = document.querySelector(".trick");
                 if($trick.classList.contains("select-trick")){
                     let $first = document.querySelector(".first");
-                    if($first == null) $history = document.querySelectorAll(".blocks div");
+                    if($first == null) {
+                        history = [];
+                        let $divs = document.querySelectorAll(".blocks div"); 
+                        $divs.forEach(el => {
+                            
+                            if(el.classList.contains("point")) el.classList.remove("point");
+                            
+                            if(el.classList.length != 1){
+                                history.push(el.classList.value);
+                            }
+                        });
+                    }
                 }
             
 

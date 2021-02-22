@@ -38,6 +38,12 @@ export default function deleteTask(deleteBtn) {
                     el.style.background = "rgb(219, 216, 216)";
                 });
             }
+
+            let $trick = document.querySelector(".trick");
+            if($trick != null){
+                let $back = document.querySelector(".back");
+                $back.classList.add("back-none");
+            }
         }
     });
 }

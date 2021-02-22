@@ -35,10 +35,11 @@ export default function addTask(addBtn) {
                 $div.style.backgroundColor = color;
                 colorSelector($div);
                 $div.addEventListener("click", () => colorSelector($div));
-
+                
                 $button.textContent = "x";
                 $button.classList.add("delete-btn");
                 $p.textContent = text;
+                $div.classList.add(text.replace(/ /g, ""));
 
                 $div.appendChild($button);
                 $div.appendChild($p);

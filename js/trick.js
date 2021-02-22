@@ -1,4 +1,5 @@
-import { $history } from "./select.js";
+import { history } from "./select.js";
+
 
 export default function trick() {
     
@@ -22,8 +23,25 @@ export default function trick() {
     $back.addEventListener("click", e => {
 
         e.stopPropagation();
-        console.log($history);
         $back.classList.add("back-none");
+        let $blocks = document.querySelectorAll(".blocks div");
+        
+        $blocks.forEach(el => {
+            if(el.classList.contains("point")) el.classList.remove("point");
+                            
+            if(el.classList.length != 1){
+                el.classList.remove(el.classList[1]);
+                el.style.backgroundColor = "rgb(219, 216, 216)"; 
+            }
+        });
+
+        history.forEach(el => {
+            let content = el.split(" ");
+            let $block = document.querySelector(`.${content[0]}`);
+            $block.classList.add(content[1]);
+            let $color = document.querySelector(`.${content[1]}`);
+            $block.style.backgroundColor = $color.style.backgroundColor;
+        });
     });
 
 }

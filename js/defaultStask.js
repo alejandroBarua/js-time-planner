@@ -35,6 +35,7 @@ export default function defaultTask() {
             $p = document.createElement("p");
         
         $div.style.backgroundColor = el.color;
+        $div.classList.add(el.name.replace(/ /g, ""));
         $div.addEventListener("click", () => colorSelector($div));
 
         $button.textContent = "x";
