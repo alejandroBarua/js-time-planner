@@ -30,6 +30,8 @@ export default function addTask(addBtn) {
                 let $list = document.querySelector(".list-task"),
                 $div = document.createElement("div"),
                 $button = document.createElement("button"),
+                $divBtn = document.createElement("div"),
+                $img = document.createElement("img"),
                 $p = document.createElement("p");
 
                 $div.style.backgroundColor = color;
@@ -40,9 +42,12 @@ export default function addTask(addBtn) {
                 $button.classList.add("delete-btn");
                 $p.textContent = text;
                 $div.classList.add(text.replace(/ /g, ""));
+                $img.setAttribute("src", "images/colors.png");
 
-                $div.appendChild($button);
+                $divBtn.appendChild($button);
+                $divBtn.appendChild($img);
                 $div.appendChild($p);
+                $div.appendChild($divBtn);
 
                 $list.prepend($div);
 

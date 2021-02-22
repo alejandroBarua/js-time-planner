@@ -107,12 +107,30 @@ header * {
 
 .list-task div {
   cursor: pointer;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 35px;
+}
+
+.list-task div div {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.list-task p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-task img {
+  padding-top: 7px;
+  width: 16px;
 }
 
 .delete-btn {
   cursor: pointer;
-  float: right;
   width: 15px;
   border: none;
   border-radius: 5px;

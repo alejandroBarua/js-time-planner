@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", e => {
     trick();
 });
 
-pointTime();
+//pointTime();
 defaultTask();
 const $input = document.querySelector(".name-input");
 $input.focus();

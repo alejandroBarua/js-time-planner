@@ -18,10 +18,6 @@ export default function defaultTask() {
         {
             name: "study",
             color:"rgb(219, 235, 4)"
-        },
-        {
-            name: "gym",    
-            color: "green"
         }
     ];
 
@@ -32,6 +28,8 @@ export default function defaultTask() {
 
         let $div = document.createElement("div"),
             $button = document.createElement("button"),
+            $divBtn = document.createElement("div"),
+            $img = document.createElement("img"),
             $p = document.createElement("p");
         
         $div.style.backgroundColor = el.color;
@@ -41,9 +39,13 @@ export default function defaultTask() {
         $button.textContent = "x";
         $button.classList.add("delete-btn");
         $p.textContent = el.name;
+        $img.setAttribute("src", "images/colors.png");
 
-        $div.appendChild($button);
+        $divBtn.appendChild($button);
+        $divBtn.appendChild($img);
         $div.appendChild($p);
+        $div.appendChild($divBtn);
+
         $fragment.appendChild($div);
     });
 
