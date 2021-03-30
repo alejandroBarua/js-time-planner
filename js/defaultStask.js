@@ -2,24 +2,40 @@ import { colorSelector } from "./main.js";
 
 export default function defaultTask() {
 
-    const taskContent = [
-        {
-            name: "sleep",
-            color:"rgb(8, 178, 201)"
-        },
-        {
-            name: "work",
-            color:"rgb(211, 120, 0)"
-        },
-        {
-            name: "free",
-            color:"rgb(158, 0, 158)"
-        },
-        {
-            name: "study",
-            color:"rgb(219, 235, 4)"
-        }
-    ];
+    let taskContent;
+
+    if(window.localStorage.tasks == undefined){
+
+        taskContent = [ 
+            {
+                name: "sleep",
+                color: "rgb(8, 178, 201)",
+                date: null
+            },
+            {
+                name: "work",
+                color:"rgb(211, 120, 0)",
+                date: null
+            },
+            {
+                name: "free",
+                color:"rgb(158, 0, 158)",
+                date: null
+            },
+            {
+                name: "study",
+                color:"rgb(219, 235, 4)",
+                date: null
+            }
+        ];
+
+        localStorage.setItem("tasks", JSON.stringify(taskContent));
+    }
+    else{
+        taskContent = JSON.parse(localStorage.getItem("tasks"));
+    }
+
+    console.log(taskContent);
 
     let $fragment = document.createDocumentFragment(),
         $listTask = document.querySelector(".list-task");

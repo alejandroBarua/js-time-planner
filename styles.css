@@ -8,22 +8,16 @@ header {
   background-color: #6c6cd8;
   font-family: "Balsamiq Sans", cursive;
   color: #ffffff;
-  padding: 20px 40px;
 }
 
 header div {
-  position: relative;
-  top: 10px;
+  padding: 10px 40px;
 }
 
 header img {
-  width: 50px;
-}
-
-header h1 {
+  width: 30px;
   position: relative;
-  top: -10px;
-  left: 10px;
+  top: 4px;
 }
 
 header * {
@@ -66,7 +60,7 @@ header * {
 }
 
 .taks {
-  margin: 40px 35px;
+  margin: 30px 35px;
 }
 
 .color-input {
@@ -99,7 +93,7 @@ header * {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
-  margin-top: 40px;
+  margin-top: 25px;
   text-align: center;
   color: white;
   font-weight: bold;
@@ -153,10 +147,14 @@ header * {
 
 .now {
   margin-top: 20px;
-  padding: 15px;
-  height: 25px;
+  padding: 5px;
+  height: 20px;
   text-align: center;
   background-color: rgb(245, 243, 243);
+}
+
+.now h2 {
+  font-size: 20px;
 }
 
 .colors {

@@ -27,6 +27,24 @@ export default function deleteTask(deleteBtn) {
                 
             }
 
+            const colors = ["#c43e4b","#e38690", "#f04732", "#f89b31", "#f9ea2c", "#c4e61b", "#5bb31f", "#1292d1", "#3074fc", "#4f4ea9", "#a45bb4", "#000000"];
+
+            colors.forEach((el, index) => {
+                if(el == rgbToHex($divDelete.style.backgroundColor)){
+ 
+                    let $Colors = document.querySelector(".colors");
+                    let $div = document.createElement("div");
+                    let $inputColor = document.querySelector(".color-input");
+
+                    $div.style.backgroundColor = el;
+                    $div.addEventListener("click", () => {
+                        $inputColor.value = el;
+                    });
+
+                    $Colors.appendChild($div);
+                }
+            });
+
             $divFatherDelete.removeChild($divDelete);
             e.stopPropagation();
             
@@ -47,4 +65,16 @@ export default function deleteTask(deleteBtn) {
             }
         }
     });
+}
+
+
+function rgbToHex(rgb) {
+
+    rgb = rgb.slice(4, ).split(",");
+
+    let r = parseInt(rgb[0]),
+        g = parseInt(rgb[1]),
+        b = parseInt(rgb[2]);
+
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }

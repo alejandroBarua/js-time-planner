@@ -9,7 +9,15 @@ export default function addTask(addBtn) {
 
          if(e.target.matches(addBtn)){
 
-            if(text != "" && !$input.classList.contains("color-red")){
+            let $tasks = document.querySelectorAll(".list-task > div p");
+
+            $tasks.forEach(el => {
+                if(text == el.textContent || text == ""){
+                    $input.classList.add("color-red");
+                }
+            });
+
+            if(!$input.classList.contains("color-red")){
                 
                 let $inputColor = document.querySelector(".color-input");
                 let color = $inputColor.value;
@@ -34,7 +42,14 @@ export default function addTask(addBtn) {
                     let $task = document.querySelector(".edit");
                     $task.children[0].textContent= text;
                     $task.style.backgroundColor = color;
-                    let textAnt = $task.classList[0];
+                    let textAnt;
+                    if($task.classList[0] != "select-task"){
+
+                        textAnt = $task.classList[0];
+                    }
+                    else{
+                        textAnt = $task.classList[1];
+                    }
                     $task.classList.remove(textAnt);
                     text = text.replace(/ /g, "");
                     $task.classList.add(text);
@@ -84,14 +99,21 @@ export default function addTask(addBtn) {
                     $div.appendChild($divBtn);
     
                     $list.prepend($div);
+
+                    let task = {
+                        name: text,
+                        color: color,
+                        date: null
+                    }
+                    let taskContent = JSON.parse(localStorage.getItem("tasks"));
+                    taskContent.unshift(task);
+                    localStorage.setItem("tasks", JSON.stringify(taskContent));
+                    console.log(JSON.parse(localStorage.getItem("tasks")));
                 }
     
                 $input.value = "";
             }
-            else{
-                $input.classList.add("color-red");
-            }    
-
+         
             $input.focus();
         }
     });
