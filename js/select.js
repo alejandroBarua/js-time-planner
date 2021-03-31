@@ -235,8 +235,9 @@ export default function selectBlock() {
                         let $back = document.querySelector(".back");
                         $back.classList.remove("back-none");
                     }
-
                 }
+
+                blocksStorage();
             }
                 
         });
@@ -305,4 +306,17 @@ function dayToNumber(day) {
     }  
 
     return number;
+}
+
+function blocksStorage() {
+    
+    let $divs = document.querySelectorAll(".blocks div");
+    let blocks = new Array();
+    $divs.forEach(el => {
+                            
+        if(el.classList.contains("point")) el.classList.remove("point");        
+        if(el.classList.length != 1) blocks.push(el.classList.value);
+    });
+                
+    localStorage.setItem("blocks", JSON.stringify(blocks));
 }

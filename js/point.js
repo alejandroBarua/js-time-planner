@@ -28,7 +28,7 @@ export default function pointTime() {
         }
 
         let $blockAnt = document.querySelector(`.${day}${date.getHours()-1}`);
-        $blockAnt.classList.remove("point");
+        if($blockAnt != null) $blockAnt.classList.remove("point");
     
     }, 1000);
 }

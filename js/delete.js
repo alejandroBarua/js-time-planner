@@ -76,6 +76,8 @@ export default function deleteTask(deleteBtn) {
                 let $back = document.querySelector(".back");
                 $back.classList.add("back-none");
             }
+
+            blocksStorage();
         }
     });
 }
@@ -90,4 +92,17 @@ function rgbToHex(rgb) {
         b = parseInt(rgb[2]);
 
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function blocksStorage() {
+    
+    let $divs = document.querySelectorAll(".blocks div");
+    let blocks = new Array();
+    $divs.forEach(el => {
+                            
+        if(el.classList.contains("point")) el.classList.remove("point");        
+        if(el.classList.length != 1) blocks.push(el.classList.value);
+    });
+                
+    localStorage.setItem("blocks", JSON.stringify(blocks));
 }
