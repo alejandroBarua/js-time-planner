@@ -21,7 +21,7 @@ export default function addTask(addBtn) {
                 
                 let $inputColor = document.querySelector(".color-input");
                 let color = $inputColor.value;
-                
+
                 let $divColors = document.querySelector(".colors");
                 const $colors = document.querySelectorAll(".colors div")
 
@@ -93,8 +93,8 @@ export default function addTask(addBtn) {
                     $img.setAttribute("src", "images/colors.png");
                     $img.classList.add("edit-btn");
     
-                    $divBtn.appendChild($button);
                     $divBtn.appendChild($img);
+                    $divBtn.appendChild($button);
                     $div.appendChild($p);
                     $div.appendChild($divBtn);
     

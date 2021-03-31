@@ -17,20 +17,37 @@
 
     <header>
         <div>
-            <img src="images/time.png" alt="time">
-            <h1>Time Planner</h1>
+            <div>
+                <img src="images/time.png" alt="time">
+                <h1>Time Planner</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="new">New Task</li>
+                    <li class="trick select-trick">fast</li>
+                    <li class="hover-menu">Delete Tasks</li>
+                    <li class="hover-menu">Clean Blocks</li>
+                </ul>
+            </nav>
         </div>
     </header>
 
+
+
     <div class="taks">
-        <div>
-            <input type="color" class="color-input" value="#c43e4b">
-            <input type="text" class="name-input" placeholder="name task" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$">
-            <button class="add-btn">Add</button>
-        </div>
+        <div class="newTask">
+            <div>
+                <div>
+                    <p class="escape">Esc</p>
+                    <input type="color" class="color-input" value="#c43e4b">
+                    <input type="text" class="name-input" placeholder="name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$">
+                    <button class="add-btn">Add</button>
+                </div>
 
-        <div class="colors">
+                <div class="colors">
 
+                </div>
+            </div>
         </div>
 
         <div class="list-task">
@@ -40,18 +57,15 @@
         <div class="container">
 
             <div class="days">
-                <div class="trick select-trick">
-                    <h3>trick</h3>
-                    <img class="back back-none" src="images/back.png">
-                </div>
                 <ul>
-                    <li class="sun">Sunday</li>
-                    <li class="mon">Monday</li>
-                    <li class="tue">Tuesday</li>
-                    <li class="wed">Wednesday</li>
-                    <li class="thu">Thursday</li>
-                    <li class="fri">Friday</li>
-                    <li class="sat">Saturday</li>
+                    <li class="back">Back</li>
+                    <li class="sun day">Sun</li>
+                    <li class="mon day">Mon</li>
+                    <li class="tue day">Tue</li>
+                    <li class="wed day">Wed</li>
+                    <li class="thu day">Thu</li>
+                    <li class="fri day">Fri</li>
+                    <li class="sat day">Sat</li>
                 </ul>
             </div>
 

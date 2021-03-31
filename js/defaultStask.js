@@ -56,8 +56,8 @@ export default function defaultTask() {
         $img.setAttribute("src", "images/colors.png");
         $img.classList.add("edit-btn");
 
-        $divBtn.appendChild($button);
         $divBtn.appendChild($img);
+        $divBtn.appendChild($button);
         $div.appendChild($p);
         $div.appendChild($divBtn);
 
@@ -71,7 +71,7 @@ export default function defaultTask() {
     if(taskList.length != 0) colorSelector($listTask.firstElementChild);
 
      if(window.localStorage.blocks != undefined) blockStorage();
-    
+
 }
 
 

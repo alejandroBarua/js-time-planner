@@ -10,8 +10,11 @@ header {
   color: #ffffff;
 }
 
-header div {
-  padding: 10px 40px;
+header > div {
+  margin: auto;
+  max-width: 950px;
+  width: 80%;
+  padding: 30px 0px 10px 0px;
 }
 
 header img {
@@ -20,14 +23,34 @@ header img {
   top: 4px;
 }
 
-header * {
+header > div * {
   display: inline-block;
 }
 
+nav ul li {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+nav ul {
+  padding-left: 30px;
+}
+
+.hover-menu:hover {
+  background-color: #3939b4;
+}
+
+.trick {
+  background-color: #8888e2;
+}
+
 .container {
-  margin-top: 40px;
+  margin: auto;
+  max-width: 950px;
+  width: 80%;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 80px 1fr;
 }
 
 .days ul {
@@ -35,7 +58,30 @@ header * {
 }
 
 .days ul li {
-  padding: 6px;
+  padding: 6px 0px;
+}
+
+.day {
+  width: 40px;
+  position: relative;
+  left: 15px;
+  top: 5px;
+}
+
+.back {
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #8888e2;
+  color: white;
+  text-align: center;
+}
+
+.back:hover {
+  background-color: #6c6cd8;
+}
+
+.back-none {
+  display: none;
 }
 
 .container-blocks {
@@ -52,15 +98,12 @@ header * {
 }
 
 .container-blocks div div {
+  border-radius: 5px;
   background-color: rgb(219, 216, 216);
 }
 
 .container-blocks .numbers * {
   background-color: white;
-}
-
-.taks {
-  margin: 30px 35px;
 }
 
 .color-input {
@@ -74,12 +117,17 @@ header * {
 
 .name-input {
   height: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0px 5px;
 }
 
 .add-btn {
   cursor: pointer;
-  padding: 6px;
-  width: 80px;
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
   border: none;
   background-color: #6c6cd8;
   color: white;
@@ -90,26 +138,22 @@ header * {
 }
 
 .list-task {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
-  margin-top: 25px;
-  text-align: center;
+  margin: 40px auto;
+  position: relative;
+  top: -30px;
+  max-width: 950px;
+  width: 80%;
   color: white;
   font-weight: bold;
 }
 
-.list-task div {
+.list-task > div {
+  padding: 15px 20px;
+  margin: 5px;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr 35px;
-}
-
-.list-task div div {
-  padding: 5px;
+  border-radius: 13px;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  float: left;
 }
 
 .list-task p {
@@ -118,19 +162,29 @@ header * {
   justify-content: center;
 }
 
+.list-task > div > div {
+  display: flex;
+  position: relative;
+  left: 5px;
+}
+
 .list-task img {
-  padding-top: 7px;
-  width: 16px;
+  padding: 0px 10px;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 1px;
 }
 
 .delete-btn {
   cursor: pointer;
-  width: 15px;
+  width: 17px;
+  height: 17px;
+  font-size: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   background-color: red;
   color: white;
-  font-weight: bold;
 }
 
 .select-task {
@@ -146,11 +200,13 @@ header * {
 }
 
 .now {
-  margin-top: 20px;
+  margin: 20px auto;
+  max-width: 940px;
+  width: 80%;
   padding: 5px;
   height: 20px;
   text-align: center;
-  background-color: rgb(245, 243, 243);
+  background-color: white;
 }
 
 .now h2 {
@@ -167,31 +223,42 @@ header * {
 .colors div {
   display: inline-block;
   width: 15px;
-  height: 15px;
+  height: 13px;
   cursor: pointer;
   margin: 3px;
-}
-
-.trick {
-  background-color: #a2a2f7;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-}
-
-.back {
-  position: relative;
-  right: 10px;
-  width: 20px;
-}
-
-.back-none {
-  display: none;
+  border-radius: 50%;
 }
 
 .select-trick {
-  background-color: #6c6cd8;
+  background-color: #3939b4;
+}
+
+.new {
+  background-color: #3939b4;
+}
+
+.newTask {
+  margin: auto;
+  max-width: 950px;
+  width: 80%;
+}
+
+.newTask > div {
+  width: 330px;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  background-color: rgb(219, 216, 216);
+}
+
+.taks {
+  margin-top: 55px;
+}
+
+.escape {
+  float: right;
+  font-size: 10px;
+  position: relative;
+  top: -10px;
+  color: #3939b4;
 }
