@@ -35,8 +35,6 @@ export default function defaultTask() {
         taskContent = JSON.parse(localStorage.getItem("tasks"));
     }
 
-    console.log(taskContent);
-
     let $fragment = document.createDocumentFragment(),
         $listTask = document.querySelector(".list-task");
 
@@ -68,5 +66,8 @@ export default function defaultTask() {
 
     
     $listTask.appendChild($fragment);
-    colorSelector($listTask.firstElementChild);
+
+    let taskList = JSON.parse(localStorage.getItem("tasks"));
+    if(taskList.length != 0) colorSelector($listTask.firstElementChild);
+    
 }

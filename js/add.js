@@ -108,7 +108,6 @@ export default function addTask(addBtn) {
                     let taskContent = JSON.parse(localStorage.getItem("tasks"));
                     taskContent.unshift(task);
                     localStorage.setItem("tasks", JSON.stringify(taskContent));
-                    console.log(JSON.parse(localStorage.getItem("tasks")));
                 }
     
                 $input.value = "";
