@@ -1,20 +1,44 @@
+:root {
+  --main-color: #6c6cd8;
+  --light-color: rgb(241, 238, 238);
+  --second-color: rgb(207, 203, 203);
+  --active-color: #3939b4;
+  --inactive-color: #8888e2;
+
+  --light-modal-color: rgb(46, 45, 45);
+  --dark-color: #222;
+  --dark-second-color: rgb(68, 67, 67);
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
 }
 
-header {
-  background-color: #6c6cd8;
-  font-family: "Balsamiq Sans", cursive;
-  color: #ffffff;
+body {
+  background-color: white;
 }
 
-header > div {
+.page {
   margin: auto;
   max-width: 950px;
   width: 80%;
+}
+
+header {
+  margin-bottom: 55px;
+  background-color: var(--main-color);
+  color: #ffffff;
+  font-family: "Balsamiq Sans", cursive;
+}
+
+header > div {
   padding: 30px 0px 10px 0px;
+}
+
+header > div * {
+  display: inline-block;
 }
 
 header img {
@@ -23,139 +47,115 @@ header img {
   top: 4px;
 }
 
-header > div * {
-  display: inline-block;
-}
-
-nav ul li {
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 15px;
-}
-
 nav ul {
   padding-left: 30px;
 }
 
-.hover:hover {
-  background-color: #3939b4;
-}
-
-.trick {
-  background-color: #8888e2;
-}
-
-.container {
-  margin: auto;
-  max-width: 950px;
-  width: 80%;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-}
-
-.days ul {
-  list-style: none;
-}
-
-.days ul li {
-  padding: 6px 0px;
-}
-
-.day {
-  width: 37px;
-  position: relative;
-  left: 15px;
-  top: 35px;
-}
-
-.back {
+nav ul li {
   cursor: pointer;
-  border-radius: 10px;
-  background-color: #8888e2;
-  color: white;
-  text-align: center;
+  padding: 10px 15px;
+  border-radius: 15px;
 }
 
-.back:hover {
-  background-color: #6c6cd8;
-}
-
-.back-none {
-  display: none;
-}
-
-.container-blocks {
-  text-align: center;
-  display: grid;
-  grid-gap: 2px;
-  grid-template-rows: repeat(8, minmax(30px, 1fr));
-}
-
-.container-blocks > * {
-  display: grid;
-  grid-gap: 2px;
-  grid-template-columns: repeat(24, 1fr);
-}
-
-.container-blocks div div {
-  border-radius: 5px;
-  background-color: rgb(219, 216, 216);
-}
-
-.container-blocks .numbers * {
-  background-color: white;
-}
+/* add task */
 
 .color-input {
   cursor: pointer;
-  border: none;
   width: 30px;
   height: 30px;
+  border: none;
   position: relative;
   top: 6px;
 }
 
 .name-input {
+  margin: 0px 5px;
+  padding: 3px;
   height: 20px;
   border: none;
   border-radius: 5px;
-  padding: 3px;
-  margin: 0px 5px;
+}
+
+.AddTask > div {
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: var(--light-color);
+  width: 330px;
+  border-radius: 20px;
+}
+
+.color-red {
+  outline: 1px solid red;
+}
+
+.escape {
+  color: var(--active-color);
+  font-size: 10px;
+  float: right;
+  position: relative;
+  top: -10px;
+}
+
+.colors {
+  margin-top: 10px;
+  width: 235px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.colors div {
+  cursor: pointer;
+  margin: 3px;
+  width: 15px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* botones */
+
+.hover:hover {
+  background-color: var(--active-color);
 }
 
 .btn {
   cursor: pointer;
-  border-radius: 10px;
-  border: none;
-  background-color: #6c6cd8;
+  background-color: var(--main-color);
   color: white;
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
 }
 
 .btn:hover {
-  background-color: #3939b4;
+  background-color: var(--active-color);
 }
 
-.point {
-  border: #6c6cd8 solid;
+.btnActive {
+  background-color: var(--inactive-color);
 }
+
+.active {
+  background-color: var(--active-color);
+}
+
+/* list of tasks */
 
 .list-task {
-  margin: 40px auto;
-  position: relative;
-  top: -30px;
-  max-width: 950px;
-  width: 80%;
   color: white;
   font-weight: bold;
+  position: relative;
+  top: -30px;
 }
 
 .list-task > div {
-  padding: 15px 20px;
-  margin: 5px;
   cursor: pointer;
+  margin: 5px;
+  padding: 15px 20px;
   border-radius: 13px;
-  display: flex;
   float: left;
+  display: flex;
 }
 
 .list-task p {
@@ -180,106 +180,85 @@ nav ul {
 
 .delete-btn {
   cursor: pointer;
-  width: 17px;
-  height: 17px;
-  font-size: 12px;
-  border: none;
-  border-radius: 50%;
   background-color: red;
   color: white;
+  font-size: 12px;
+  width: 17px;
+  height: 17px;
+  border: none;
+  border-radius: 50%;
 }
 
 .select-task {
-  outline: 2px solid #6c6cd8;
+  outline: 2px solid var(--main-color);
 }
 
-.color-red {
-  outline: 1px solid red;
+/* container -> days, hours, blocks*/
+
+.container {
+  color: black;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+
+.days ul {
+  list-style: none;
+}
+
+.days ul li {
+  padding: 6px 0px;
+}
+
+.day {
+  width: 37px;
+  position: relative;
+  left: 15px;
+  top: 35px;
+}
+
+.days ~ div {
+  text-align: center;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-rows: repeat(8, minmax(30px, 1fr));
+}
+
+.days ~ div > * {
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(24, 1fr);
+}
+
+.blocks div {
+  background-color: var(--second-color);
+  border-radius: 5px;
+}
+
+.point {
+  border: var(--main-color) solid;
 }
 
 .color-blue {
-  color: #6c6cd8;
+  color: var(--main-color);
 }
+
+/* stask now y btn clean */
+
 .div-now {
-  margin: 15px auto;
-  max-width: 940px;
-  width: 80%;
+  margin-top: 15px;
   padding: 5px;
   height: 25px;
   display: flex;
   justify-content: space-between;
 }
+
 .now {
   margin: 0px 30px 0px 80px;
+  background-color: var(--light-color);
   flex: 2;
   text-align: center;
-  background-color: rgb(241, 238, 238);
 }
 
 .now h2 {
   font-size: 20px;
-}
-
-.btn {
-  cursor: pointer;
-  width: 60px;
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-  background-color: #6c6cd8;
-  color: white;
-}
-
-.colors {
-  margin-top: 10px;
-  width: 235px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.colors div {
-  display: inline-block;
-  width: 15px;
-  height: 13px;
-  cursor: pointer;
-  margin: 3px;
-  border-radius: 50%;
-}
-
-.Add {
-  background-color: #3939b4;
-}
-
-.AddTask {
-  margin: auto;
-  max-width: 950px;
-  width: 80%;
-}
-
-.AddTask > div {
-  width: 330px;
-  padding: 20px;
-  border-radius: 20px;
-  margin-bottom: 50px;
-  background-color: rgb(219, 216, 216);
-}
-
-.taks {
-  margin-top: 55px;
-}
-
-.escape {
-  float: right;
-  font-size: 10px;
-  position: relative;
-  top: -10px;
-  color: #3939b4;
-}
-
-.btnActive {
-  background-color: #8888e2;
-}
-
-.active {
-  background-color: #3939b4;
 }
