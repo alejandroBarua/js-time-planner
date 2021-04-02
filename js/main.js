@@ -7,6 +7,7 @@ import selectBlock from "./select.js";
 import defaultColors from "./defaultColors.js";
 import trick from "./trick.js";
 import edit from "./edit.js";
+import btnActive from "./btnActive.js";
 
 export function colorSelector($div) {
     
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", e => {
     addTask(".add-btn");
     deleteTask(".delete-btn");
     edit(".edit-btn");
+    btnActive(".btnActive")
     validation();
     selectBlock();
     defaultColors();

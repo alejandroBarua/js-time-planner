@@ -23,10 +23,11 @@
             </div>
             <nav>
                 <ul>
-                    <li class="new">New Task</li>
-                    <li class="trick select-trick">fast</li>
-                    <li class="hover-menu">Delete Tasks</li>
-                    <li class="hover-menu">Clean Blocks</li>
+                    <li class="add-menu btnActive active">Add Task</li>
+                    <li class="trick select-trick btnActive active">fast</li>
+                    <li class="hover">Back</li>
+                    <li class="hover">Delete All</li>
+                    <li class="dark-menu btnActive">Mode Dark</li>
                 </ul>
             </nav>
         </div>
@@ -35,13 +36,13 @@
 
 
     <div class="taks">
-        <div class="newTask">
+        <div class="AddTask">
             <div>
                 <div>
                     <p class="escape">Esc</p>
                     <input type="color" class="color-input" value="#c43e4b">
                     <input type="text" class="name-input" placeholder="name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$">
-                    <button class="add-btn">Add</button>
+                    <button class="add-btn btn">Add</button>
                 </div>
 
                 <div class="colors">
@@ -58,7 +59,6 @@
 
             <div class="days">
                 <ul>
-                    <li class="back">Back</li>
                     <li class="sun day">Sun</li>
                     <li class="mon day">Mon</li>
                     <li class="tue day">Tue</li>
@@ -283,8 +283,11 @@
             </div>
         </div>
 
-        <div class="now">
-            <h2></h2>
+        <div class="div-now">
+            <div class="now">
+                <h2></h2>
+            </div>
+            <button class="clean-btn btn">Clean</button>
         </div>
     </div>
     <script src="js/main.js" type="module"></script>
