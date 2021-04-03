@@ -271,5 +271,8 @@ nav ul li {
 
 .mode-dark {
   background-color: var(--dark-second-color);
+}
+
+.white {
   color: white;
 }

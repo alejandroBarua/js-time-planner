@@ -13,12 +13,17 @@ export default function addTask(addBtn) {
             let text = $inputName.value.trim();
 
             let $tasks = document.querySelectorAll(".list-task > div p");
+            let positionEdit = null;
 
             $inputName.classList.remove("color-red");
-            $tasks.forEach(el => {
-                if(text == el.textContent || text == "" || color == "#ffffff"){
-                    $inputName.classList.add("color-red");
-                }
+            
+            $tasks.forEach((el, index) => {
+                if(el.parentNode.classList.contains("edit")) positionEdit = index;
+            });
+
+            $tasks.forEach((el, index) => {
+                if(text == "" || color == "#ffffff") $inputName.classList.add("color-red");
+                if(text == el.textContent && positionEdit != index) $inputName.classList.add("color-red");
             });
 
             if(!$inputName.classList.contains("color-red")){
@@ -115,8 +120,6 @@ export default function addTask(addBtn) {
         }
     });
 }
-
-
 
 function hexToRgb(hex) {
     let bigint = parseInt(hex, 16);

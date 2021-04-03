@@ -85,7 +85,7 @@ function blockStorage() {
                             
             if(el.classList.length != 1){
                 el.classList.remove(el.classList[1]);
-                el.style.backgroundColor = "rgb(219, 216, 216)"; 
+                el.style.backgroundColor = "var(--second-color)"; 
             }
         });
 
