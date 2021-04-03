@@ -232,8 +232,8 @@ export default function selectBlock() {
                             }
                         }
                         $first.classList.remove("first");
-                        let $back = document.querySelector(".back");
-                        $back.classList.remove("back-none");
+                        //let $back = document.querySelector(".back");
+                        //$back.classList.remove("back-none");
                     }
                 }
 

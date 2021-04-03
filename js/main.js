@@ -8,6 +8,7 @@ import defaultColors from "./defaultColors.js";
 import trick from "./trick.js";
 import edit from "./edit.js";
 import btnActive from "./btnActive.js";
+import dark from "./dark.js";
 
 export function colorSelector($div) {
     
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", e => {
     trick();
 });
 
+dark();
 pointTime();
 defaultTask();
 const $input = document.querySelector(".name-input");

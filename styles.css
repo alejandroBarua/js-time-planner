@@ -20,8 +20,14 @@ body {
   background-color: white;
 }
 
+.body-dark {
+  background-color: var(--dark-color);
+  color: white;
+}
+
 .page {
   margin: auto;
+  margin-bottom: 20px;
   max-width: 950px;
   width: 80%;
 }
@@ -76,7 +82,7 @@ nav ul li {
   border-radius: 5px;
 }
 
-.AddTask > div {
+.addTask {
   margin-bottom: 50px;
   padding: 20px;
   background-color: var(--light-color);
@@ -147,6 +153,8 @@ nav ul li {
   font-weight: bold;
   position: relative;
   top: -30px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .list-task > div {
@@ -154,7 +162,6 @@ nav ul li {
   margin: 5px;
   padding: 15px 20px;
   border-radius: 13px;
-  float: left;
   display: flex;
 }
 
@@ -195,8 +202,7 @@ nav ul li {
 
 /* container -> days, hours, blocks*/
 
-.container {
-  color: black;
+.container-table {
   display: grid;
   grid-template-columns: 80px 1fr;
 }
@@ -207,9 +213,6 @@ nav ul li {
 
 .days ul li {
   padding: 6px 0px;
-}
-
-.day {
   width: 37px;
   position: relative;
   left: 15px;
@@ -261,4 +264,9 @@ nav ul li {
 
 .now h2 {
   font-size: 20px;
+}
+
+.mode-dark {
+  background-color: var(--dark-second-color);
+  color: white;
 }
