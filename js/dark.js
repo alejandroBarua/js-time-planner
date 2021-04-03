@@ -8,29 +8,23 @@ export default function dark() {
 
     const lightMode = () => {
         $body.classList.remove("body-dark");
-        $addTask.classList.remove("mode-dark");
-        $escape.classList.remove("mode-dark");
+        if($addTask) $addTask.classList.remove("mode-dark");
+        if($escape) $escape.classList.remove("mode-dark");
         $now.classList.remove("mode-dark");
         localStorage.setItem("theme", "light");
     };
 
     const darkMode = () => {
         $body.classList.add("body-dark");
-        $addTask.classList.add("mode-dark");
-        $escape.classList.add("mode-dark");
+        if($addTask) $addTask.classList.add("mode-dark");
+        if($escape) $escape.classList.add("mode-dark");
         $now.classList.add("mode-dark");
         localStorage.setItem("theme", "dark");
     };
 
     $dark.addEventListener("click", e => {
         
-        if($dark.classList.contains("active")){
-            lightMode();
-        }
-        else{
-            darkMode();
-        }
-
+        $dark.classList.contains("active") ? lightMode() : darkMode();
     });
 
      document.addEventListener("DOMContentLoaded", e => {
@@ -39,7 +33,8 @@ export default function dark() {
         if(localStorage.getItem("theme") === "light") lightMode();
         if(localStorage.getItem("theme") === "dark") {
             $dark.classList.add("active");
-            darkMode()};
+            darkMode();
+        };
 
     });
 

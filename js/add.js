@@ -3,39 +3,27 @@ import { colorSelector } from "./main.js";
 export default function addTask(addBtn) {
     
     document.addEventListener("click", e => {
-        
-        const $input = document.querySelector(".name-input");
-        let text = $input.value;
 
-         if(e.target.matches(addBtn)){
+        if(e.target.matches(addBtn)){
+        
+            const $inputName = document.querySelector(".name-input"),
+                $inputColor = document.querySelector(".color-input"),
+                color = $inputColor.value;
+
+            let text = $inputName.value.trim();
 
             let $tasks = document.querySelectorAll(".list-task > div p");
 
+            $inputName.classList.remove("color-red");
             $tasks.forEach(el => {
-                if(text == el.textContent || text == ""){
-                    $input.classList.add("color-red");
+                if(text == el.textContent || text == "" || color == "#ffffff"){
+                    $inputName.classList.add("color-red");
                 }
             });
 
-            if(!$input.classList.contains("color-red")){
+            if(!$inputName.classList.contains("color-red")){
                 
-                let $inputColor = document.querySelector(".color-input");
-                let color = $inputColor.value;
-
-                let $divColors = document.querySelector(".colors");
-                const $colors = document.querySelectorAll(".colors div")
-
-                $colors.forEach((el, index) => {
-                    
-                    if(el.style.backgroundColor == hexToRgb(color.slice(1, 7))){
-                        $divColors.removeChild($divColors.children[index]);
-
-                        if($colors.length != 1) $inputColor.value = rgbToHex($divColors.children[0].style.backgroundColor);
-                        
-                    }
-                });
-
-                let $add = e.target;
+                const $add = e.target;
                 
                 if($add.textContent == "Ok"){
                     
@@ -110,13 +98,25 @@ export default function addTask(addBtn) {
                     localStorage.setItem("tasks", JSON.stringify(taskContent));
                 }
     
-                $input.value = "";
+                $inputName.value = "";
             }
          
-            $input.focus();
+            $inputName.focus();
+        }
+    });
+
+    document.addEventListener("input", e => {
+
+        if(e.target.matches(".name-input")){
+
+            let $inputName = e.target;
+
+            $inputName.classList.remove("color-red");
         }
     });
 }
+
+
 
 function hexToRgb(hex) {
     let bigint = parseInt(hex, 16);

@@ -1,14 +1,15 @@
 import pointTime from "./point.js";
-import addTask from "./add.js";
-import deleteTask from "./delete.js";
-import defaultTask from "./defaultStask.js";
-import validation from "./validation.js";
 import selectBlock from "./select.js";
-import defaultColors from "./defaultColors.js";
-import trick from "./trick.js";
-import edit from "./edit.js";
-import btnActive from "./btnActive.js";
+
+import defaultTask from "./defaultStask.js";
 import dark from "./dark.js";
+import btnActive from "./btnActive.js";
+import addTaskContent from "./addTaskContent.js";
+import addTask from "./add.js";
+
+import edit from "./edit.js";
+import deleteTask from "./delete.js";
+import trick from "./trick.js";
 
 export function colorSelector($div) {
     
@@ -31,14 +32,11 @@ document.addEventListener("DOMContentLoaded", e => {
     deleteTask(".delete-btn");
     edit(".edit-btn");
     btnActive(".btnActive")
-    validation();
     selectBlock();
-    defaultColors();
     trick();
+    addTaskContent();
 });
 
 dark();
 pointTime();
 defaultTask();
-const $input = document.querySelector(".name-input");
-$input.focus();

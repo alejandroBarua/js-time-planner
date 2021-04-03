@@ -75,7 +75,7 @@ export default function selectBlock() {
 
                 if($first != null){
 
-                    if($first.style.backgroundColor != "rgb(219, 216, 216)"){
+                    if($first.style.backgroundColor != "var(--second-color)"){
                         
                         let dayFirst = dayToNumber($first.classList[0].slice(0,3));
                         let numberFirst = parseInt($first.classList[0].slice(3,5));
@@ -101,7 +101,7 @@ export default function selectBlock() {
                                 let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
                             
                                 if($first != $blockTrick){ 
-                                    $blockTrick.style.backgroundColor= "rgb(219, 216, 216)";
+                                    $blockTrick.style.backgroundColor= "var(--second-color)";
                                 
                                     if($blockTrick.classList.length == 3){
                                         
@@ -173,7 +173,7 @@ export default function selectBlock() {
                 
                 if(el.style.backgroundColor == color){
                     
-                    el.style.backgroundColor = "rgb(219, 216, 216)";
+                    el.style.backgroundColor = "var(--second-color)";
                 }
                 else{
                     el.style.backgroundColor = color;

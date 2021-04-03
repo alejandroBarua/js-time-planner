@@ -6,5 +6,6 @@ export default function btnActive(menu) {
 
              e.target.classList.toggle("active");
          }
+
     });
 }

@@ -84,10 +84,13 @@ nav ul li {
 
 .addTask {
   margin-bottom: 50px;
-  padding: 20px;
   background-color: var(--light-color);
   width: 330px;
   border-radius: 20px;
+}
+
+.addTaskActive {
+  padding: 20px;
 }
 
 .color-red {
