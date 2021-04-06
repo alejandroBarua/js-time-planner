@@ -9,23 +9,19 @@ export default function defaultTask() {
         taskContent = [ 
             {
                 name: "sleep",
-                color: "rgb(8, 178, 201)",
-                date: null
+                color: "#1292d1"
             },
             {
                 name: "work",
-                color:"rgb(211, 120, 0)",
-                date: null
+                color:"#f89b31"
             },
             {
                 name: "free",
-                color:"rgb(158, 0, 158)",
-                date: null
+                color:"#a45bb4"
             },
             {
                 name: "study",
-                color:"rgb(219, 235, 4)",
-                date: null
+                color:"#f9ea2c"
             }
         ];
 

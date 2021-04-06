@@ -49,7 +49,7 @@ export default function deleteTask(deleteBtn) {
             if($blocks.length != 0){
                 $blocks.forEach(el => {
                     el.classList.remove(nameStask);
-                    el.style.background = "rgb(219, 216, 216)";
+                    el.style.background = "var(--second-color)";
                 });
             }
 
@@ -62,18 +62,6 @@ export default function deleteTask(deleteBtn) {
             blocksStorage();
         }
     });
-}
-
-
-function rgbToHex(rgb) {
-
-    rgb = rgb.slice(4, ).split(",");
-
-    let r = parseInt(rgb[0]),
-        g = parseInt(rgb[1]),
-        b = parseInt(rgb[2]);
-
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
 function blocksStorage() {
