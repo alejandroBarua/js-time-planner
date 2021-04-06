@@ -94,6 +94,7 @@ function colorPalet() {
         $div.style.backgroundColor = el;
         $div.addEventListener("click", () => {
             $inputColor.value = el;
+            $inputColor.classList.remove("color-red");
             const $inputText = document.querySelector(".name-input");
             $inputText.focus();
             $inputText.classList.remove("color-red");
@@ -189,6 +190,10 @@ export function dayToNumber(day) {
     return number;
 }
 
+defaultTask();
+pointTime();
+dark();
+
 document.addEventListener("DOMContentLoaded", e => {
     addTask(".add-btn");
     deleteTask(".delete-btn");
@@ -200,7 +205,3 @@ document.addEventListener("DOMContentLoaded", e => {
     clean();
     deleteAll();
 });
-
-dark();
-pointTime();
-defaultTask();

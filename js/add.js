@@ -13,20 +13,25 @@ export default function addTask(addBtn) {
             let text = $inputName.value.trim();
 
             let $tasks = document.querySelectorAll(".list-task > div p");
-            let positionEdit = null;
+            if($tasks.length != 0){
 
-            $inputName.classList.remove("color-red");
+                let positionEdit = null;
+    
+                $inputName.classList.remove("color-red");
+                
+                $tasks.forEach((el, index) => {
+                    if(el.parentNode.classList.contains("edit")) positionEdit = index;
+                });
+    
+                $tasks.forEach((el, index) => {
+                    if(text == el.textContent && positionEdit != index) $inputName.classList.add("color-red");
+                });
+            }
             
-            $tasks.forEach((el, index) => {
-                if(el.parentNode.classList.contains("edit")) positionEdit = index;
-            });
-
-            $tasks.forEach((el, index) => {
-                if(text == "" || color == "#ffffff") $inputName.classList.add("color-red");
-                if(text == el.textContent && positionEdit != index) $inputName.classList.add("color-red");
-            });
-
-            if(!$inputName.classList.contains("color-red")){
+            if(text == "") $inputName.classList.add("color-red");
+            if(color == "#ffffff") $inputColor.classList.add("color-red");
+            
+            if(!$inputName.classList.contains("color-red") && !$inputColor.classList.contains("color-red")){
                 
                 const $add = e.target,
                     taskContent = JSON.parse(localStorage.getItem("tasks"));
@@ -88,11 +93,11 @@ export default function addTask(addBtn) {
                 else{
 
                     let $list = document.querySelector(".list-task"),
-                    $div = document.createElement("div"),
-                    $button = document.createElement("button"),
-                    $divBtn = document.createElement("div"),
-                    $img = document.createElement("img"),
-                    $p = document.createElement("p");
+                        $div = document.createElement("div"),
+                        $button = document.createElement("button"),
+                        $divBtn = document.createElement("div"),
+                        $img = document.createElement("img"),
+                        $p = document.createElement("p");
     
                     $div.style.backgroundColor = color;
                     colorSelector($div);
@@ -135,8 +140,13 @@ export default function addTask(addBtn) {
         if(e.target.matches(".name-input")){
 
             let $inputName = e.target;
-
             $inputName.classList.remove("color-red");
+        }
+
+        if(e.target.matches(".color-input")){
+
+            let $inputColor = e.target;
+            $inputColor.classList.remove("color-red");
         }
     });
 }

@@ -1,4 +1,4 @@
-import { colorSelector, getBlockStorage } from "./main.js";
+import { colorSelector, numbeToDay,getBlockStorage } from "./main.js";
 
 export default function defaultTask() {
 
@@ -66,6 +66,41 @@ export default function defaultTask() {
     let taskList = JSON.parse(localStorage.getItem("tasks"));
     if(taskList.length != 0) colorSelector($listTask.firstElementChild);
 
+    defaultBlocks();
     if(window.localStorage.blocks != undefined) getBlockStorage();
+
+}
+
+function defaultBlocks() {
+    
+    const $containerBlocks = document.querySelector(".container-blocks"),
+        $fragment = document.createDocumentFragment();
+    
+    let $blocksNumber = document.createElement("div");
+    $blocksNumber.classList.add("numbers");
+    for(let i = 0; i < 24; i++){
+        let $div = document.createElement("div");
+        $div.classList.add(`id${i}`);
+        $div.textContent = i;
+        $blocksNumber.appendChild($div);
+    }
+    $fragment.appendChild($blocksNumber);
+
+
+    for(let i = 0; i < 7; i++){
+
+        let $blocks = document.createElement("div");
+        $blocks.classList.add("blocks");
+    
+        for(let j = 0; j < 24; j++){
+            let $div = document.createElement("div");
+            $div.classList.add(`${numbeToDay(i)}${j}`);
+            $blocks.appendChild($div);
+        }
+    
+        $fragment.appendChild($blocks);
+    }
+
+    $containerBlocks.appendChild($fragment);
 
 }
