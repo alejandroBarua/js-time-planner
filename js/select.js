@@ -1,28 +1,29 @@
-export let history = new Array();
+import { numbeToDay, dayToNumber, setBlocksStorage } from "./main.js";
+
 
 export default function selectBlock() {
  
-    let $blocks = document.querySelectorAll(".blocks div");
+    const $blocks = document.querySelectorAll(".blocks div");
 
     $blocks.forEach(el => {
 
         let day = el.classList[0].slice(0,3);
         let number = el.classList[0].slice(3,5);
             
-        let $day = document.querySelector(`.${day}`);
-        let $number = document.querySelector(`.id${number}`);
+        const $day = document.querySelector(`.${day}`),
+            $number = document.querySelector(`.id${number}`);
 
         el.addEventListener("mouseover", e => {
             $day.classList.add("color-blue");
             $number.classList.add("color-blue");
 
                       
-            let $task = document.querySelector(".select-task");
-            let $block = e.target;
+            const $task = document.querySelector(".select-task"),
+                $block = e.target;
             
             if($task != null){
                     
-                let $first = document.querySelector(".first");
+                const $first = document.querySelector(".first");
                 
                 if($first != null){
                     
@@ -66,12 +67,12 @@ export default function selectBlock() {
             $day.classList.remove("color-blue");
             $number.classList.remove("color-blue");
 
-            let $task = document.querySelector(".select-task");
-            let $block = e.target;
+            const $task = document.querySelector(".select-task"),
+                $block = e.target;
             
             if($task != null){
                     
-                let $first = document.querySelector(".first");
+                const $first = document.querySelector(".first");
 
                 if($first != null){
 
@@ -98,7 +99,7 @@ export default function selectBlock() {
 
                             for(let j = numberFirst; j <= numberSecond; j++){
 
-                                let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                                const $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
                             
                                 if($first != $blockTrick){ 
                                     $blockTrick.style.backgroundColor= "var(--second-color)";
@@ -132,17 +133,18 @@ export default function selectBlock() {
 
         el.addEventListener("click", e => {
             
-            let $block = e.target;
-            let $task = document.querySelector(".select-task");
+            const $block = e.target,
+                $task = document.querySelector(".select-task");
 
             if($task != null){
 
-                let $trick = document.querySelector(".trick");
+                const $trick = document.querySelector(".trick");
                 if($trick.classList.contains("select-trick")){
-                    let $first = document.querySelector(".first");
+                    const $first = document.querySelector(".first");
                     if($first == null) {
-                        history = [];
-                        let $divs = document.querySelectorAll(".blocks div"); 
+                        const $divs = document.querySelectorAll(".blocks div"); 
+                        let history = new Array();
+
                         $divs.forEach(el => {
                             
                             if(el.classList.contains("point")) el.classList.remove("point");
@@ -183,7 +185,7 @@ export default function selectBlock() {
 
                 if($trick.classList.contains("select-trick")){
     
-                    let $first = document.querySelector(".first");
+                    const $first = document.querySelector(".first");
                     if($first == null){
                         
                         $block.classList.add("first");            
@@ -211,7 +213,7 @@ export default function selectBlock() {
 
                             for(let j = numberFirst; j <= numberSecond; j++){
 
-                                let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                                const $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
 
                                 if($blockTrick.classList.length == 3){
                                     if($blockTrick.classList[1] != "point"){
@@ -232,91 +234,13 @@ export default function selectBlock() {
                             }
                         }
                         $first.classList.remove("first");
-                        //let $back = document.querySelector(".back");
-                        //$back.classList.remove("back-none");
                     }
                 }
 
-                blocksStorage();
+                setBlocksStorage();
             }
                 
         });
     });
     
-}
-
-
-function numbeToDay(number) {
-
-    let day;
-     
-    switch (number) {
-        case 0:
-            day = "sun";
-            break;
-        case 1:
-            day = "mon";
-            break;
-        case 2:
-            day = "tue";
-            break;
-        case 3:
-            day = "wed";
-            break;
-        case 4:
-            day = "thu"
-            break;
-        case 5:
-            day = "fri";
-            break;
-        case 6:
-            day = "sat";
-            break;
-    }  
-
-    return day;
-}
-
-function dayToNumber(day) {
-
-    let number;
-     
-    switch (day) {
-        case "sun":
-            number = 0;
-            break;
-        case "mon":
-            number = 1;
-            break;
-        case "tue":
-            number = 2;
-            break;
-        case "wed":
-            number = 3;
-            break;
-        case "thu":
-            number = 4;
-            break;
-        case "fri":
-            number = 5;
-            break;
-        case "sat":
-            number = 6;
-            break;
-    }  
-
-    return number;
-}
-
-function blocksStorage() {
-    
-    let $divs = document.querySelectorAll(".blocks div");
-    let blocks = new Array();
-    $divs.forEach(el => {
-                            
-        if(el.classList.contains("point")) el.classList.remove("point");        
-        if(el.classList.length != 1) blocks.push(el.classList.value);
-    });
-                
-    localStorage.setItem("blocks", JSON.stringify(blocks));
 }

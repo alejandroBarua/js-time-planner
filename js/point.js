@@ -1,3 +1,4 @@
+import { numbeToDay } from "./main.js";
 
 export default function pointTime() {
     
@@ -31,35 +32,4 @@ export default function pointTime() {
         if($blockAnt != null) $blockAnt.classList.remove("point");
     
     }, 1000);
-}
-
-function numbeToDay(value) {
-
-    let day;
-     
-    switch (value) {
-        case 0:
-            day = "sun";
-            break;
-        case 1:
-            day = "mon";
-            break;
-        case 2:
-            day = "tue";
-            break;
-        case 3:
-            day = "wed";
-            break;
-        case 4:
-            day = "thu"
-            break;
-        case 5:
-            day = "fri";
-            break;
-        case 6:
-            day = "sat";
-            break;
-    }  
-
-    return day;
 }

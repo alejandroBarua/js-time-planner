@@ -1,4 +1,4 @@
-import { colorSelector } from "./main.js";
+import { colorSelector, setBlocksStorage, rgbToHex } from "./main.js";
 
 export default function addTask(addBtn) {
     
@@ -38,13 +38,10 @@ export default function addTask(addBtn) {
                     
                     if(colorAnt.includes("rgb")) colorAnt = rgbToHex(colorAnt);
 
-                        
-                        $task.style.backgroundColor = color;
-                        if(taskContent != null ) taskContent.forEach(el => {
-                            if(el.color == colorAnt){
-                                el.color = color;
-                            }
-                        });
+                    $task.style.backgroundColor = color;
+                    if(taskContent != null ) taskContent.forEach(el => {
+                        if(el.color == colorAnt) el.color = color;
+                    });
 
                     let textAnt;
                     if($task.classList[0] != "select-task"){
@@ -56,39 +53,37 @@ export default function addTask(addBtn) {
                     }
 
 
-                        $task.classList.remove(textAnt);
+                    $task.classList.remove(textAnt);
     
-                        $task.children[0].textContent= text;
-                        text = text.replace(/ /g, "");
-                        $task.classList.add(text);
-                        $task.classList.remove("edit");
+                    $task.children[0].textContent= text;
+                    text = text.replace(/ /g, "");
+                    $task.classList.add(text);
+                    $task.classList.remove("edit");
                         
-                        let $blocks = document.querySelectorAll(".blocks div"); 
-                        let history = new Array();
+                    let $blocks = document.querySelectorAll(".blocks div"); 
+                    let history = new Array();
                         
-                        $blocks.forEach(el => {
+                    $blocks.forEach(el => {
                             
-                            if(el.classList.contains(textAnt)){
-                                history.push(el.classList[0]);
-                            }
-                        });
+                        if(el.classList.contains(textAnt)){
+                            history.push(el.classList[0]);
+                        }
+                    });
                         
-                        history.forEach(el => {
-                            let $block = document.querySelector(`.${el}`);
-                            $block.classList.remove(textAnt);
-                            $block.classList.add(text);
-                            $block.style.backgroundColor = color;
-                        });
+                    history.forEach(el => {
+                        let $block = document.querySelector(`.${el}`);
+                        $block.classList.remove(textAnt);
+                        $block.classList.add(text);
+                        $block.style.backgroundColor = color;
+                    });
 
-                        taskContent.forEach(el => {
-                            if(el.name == textAnt){
-                                el.name = text;
-                            }
-                        });
+                    taskContent.forEach(el => {
+                        if(el.name == textAnt) el.name = text;
+                    });
                     
                     $add.textContent = "Add";
                     localStorage.setItem("tasks", JSON.stringify(taskContent));
-                    blocksStorage();
+                    setBlocksStorage();
                 }
                 else{
 
@@ -144,39 +139,4 @@ export default function addTask(addBtn) {
             $inputName.classList.remove("color-red");
         }
     });
-}
-
-
-function rgbToHex(rgb) {
-    
-    rgb = rgb.slice(4, ).split(",");
-    
-    let r = parseInt(rgb[0]),
-    g = parseInt(rgb[1]),
-    b = parseInt(rgb[2]);
-    
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-}
-
-/* function hexToRgb(hex) {
-    hex = hex.slice(1, 7);
-    let bigint = parseInt(hex, 16);
-    let r = (bigint >> 16) & 255;
-    let g = (bigint >> 8) & 255;
-    let b = bigint & 255;
-
-    return `rgb(${r}, ${g}, ${b})`;
-} */
-
-function blocksStorage() {
-    
-    let $divs = document.querySelectorAll(".blocks div");
-    let blocks = new Array();
-    $divs.forEach(el => {
-                            
-        if(el.classList.contains("point")) el.classList.remove("point");        
-        if(el.classList.length != 1) blocks.push(el.classList.value);
-    });
-                
-    localStorage.setItem("blocks", JSON.stringify(blocks));
 }

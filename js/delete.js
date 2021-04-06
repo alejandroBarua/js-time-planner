@@ -1,4 +1,4 @@
-import { colorSelector } from "./main.js";
+import { colorSelector, setBlocksStorage } from "./main.js";
 
 export default function deleteTask(deleteBtn) {
 
@@ -53,26 +53,7 @@ export default function deleteTask(deleteBtn) {
                 });
             }
 
-            let $trick = document.querySelector(".trick");
-            if($trick != null){
-                /* let $back = document.querySelector(".back");
-                $back.classList.add("back-none"); */
-            }
-
-            blocksStorage();
+            setBlocksStorage();
         }
     });
-}
-
-function blocksStorage() {
-    
-    let $divs = document.querySelectorAll(".blocks div");
-    let blocks = new Array();
-    $divs.forEach(el => {
-                            
-        if(el.classList.contains("point")) el.classList.remove("point");        
-        if(el.classList.length != 1) blocks.push(el.classList.value);
-    });
-                
-    localStorage.setItem("blocks", JSON.stringify(blocks));
 }

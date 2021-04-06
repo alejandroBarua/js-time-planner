@@ -1,4 +1,4 @@
-import { colorSelector } from "./main.js";
+import { colorSelector, getBlockStorage } from "./main.js";
 
 export default function defaultTask() {
 
@@ -66,30 +66,6 @@ export default function defaultTask() {
     let taskList = JSON.parse(localStorage.getItem("tasks"));
     if(taskList.length != 0) colorSelector($listTask.firstElementChild);
 
-     if(window.localStorage.blocks != undefined) blockStorage();
+    if(window.localStorage.blocks != undefined) getBlockStorage();
 
-}
-
-
-function blockStorage() {
-    
-        let $blocks = document.querySelectorAll(".blocks div");
-        let blocks = JSON.parse(localStorage.getItem("blocks"));
-        
-        $blocks.forEach(el => {
-            if(el.classList.contains("point")) el.classList.remove("point");
-                            
-            if(el.classList.length != 1){
-                el.classList.remove(el.classList[1]);
-                el.style.backgroundColor = "var(--second-color)"; 
-            }
-        });
-
-        blocks.forEach(el => {
-            let content = el.split(" ");
-            let $block = document.querySelector(`.${content[0]}`);
-            $block.classList.add(content[1]);
-            let $color = document.querySelector(`.${content[1]}`);
-            $block.style.backgroundColor = $color.style.backgroundColor;
-        });
 }
