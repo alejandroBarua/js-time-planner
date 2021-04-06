@@ -99,6 +99,7 @@ export default function addTask(addBtn) {
                         date: null
                     }
                     let taskContent = JSON.parse(localStorage.getItem("tasks"));
+                    if(taskContent == undefined) taskContent = [];
                     taskContent.unshift(task);
                     localStorage.setItem("tasks", JSON.stringify(taskContent));
                 }

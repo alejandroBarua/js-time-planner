@@ -11,6 +11,9 @@ import edit from "./edit.js";
 import deleteTask from "./delete.js";
 import trick from "./trick.js";
 
+import  clean from "./clean.js";
+import deleteAll from "./deleteAll.js";
+
 export function colorSelector($div) {
     
     let $divPrev = document.querySelector(".select-task");
@@ -35,6 +38,8 @@ document.addEventListener("DOMContentLoaded", e => {
     selectBlock();
     trick();
     addTaskContent();
+    clean();
+    deleteAll();
 });
 
 dark();
