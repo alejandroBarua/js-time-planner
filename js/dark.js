@@ -38,7 +38,5 @@ export default function dark() {
             $dark.classList.add("active");
             darkMode();
         };
-
     });
-
 }

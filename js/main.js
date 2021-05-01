@@ -2,16 +2,14 @@ import pointTime from "./point.js";
 import selectBlock from "./select.js";
 import defaultTask from "./defaultStask.js";
 import dark from "./dark.js";
-import btnActive from "./btnActive.js";
 import addTaskContent from "./addTaskContent.js";
 import addTask from "./add.js";
 import edit from "./edit.js";
 import deleteTask from "./delete.js";
-import trick from "./trick.js";
-import  clean from "./clean.js";
 import deleteAll from "./deleteAll.js";
+import defaultBlocks from "./defaultBlocks.js";
 
-export function colorSelector($div) {
+export const colorSelector = ($div) => {
     
     let $divPrev = document.querySelector(".select-task");
     if($divPrev != null) $divPrev.classList.remove("select-task");
@@ -23,7 +21,6 @@ export function colorSelector($div) {
 
         $first.style.backgroundColor = "rgb(219, 216, 216)";
         $first.classList.remove("first");
-
     }
 }
 
@@ -127,81 +124,63 @@ export function rgbToHex(rgb) {
     return `rgb(${r}, ${g}, ${b})`;
 } */
 
-
-export function numbeToDay(number) {
-
-    let day;
-     
-    switch (number) {
-        case 0:
-            day = "sun";
-            break;
-        case 1:
-            day = "mon";
-            break;
-        case 2:
-            day = "tue";
-            break;
-        case 3:
-            day = "wed";
-            break;
-        case 4:
-            day = "thu"
-            break;
-        case 5:
-            day = "fri";
-            break;
-        case 6:
-            day = "sat";
-            break;
-    }  
-
-    return day;
-}
-
-export function dayToNumber(day) {
-
-    let number;
-     
-    switch (day) {
-        case "sun":
-            number = 0;
-            break;
-        case "mon":
-            number = 1;
-            break;
-        case "tue":
-            number = 2;
-            break;
-        case "wed":
-            number = 3;
-            break;
-        case "thu":
-            number = 4;
-            break;
-        case "fri":
-            number = 5;
-            break;
-        case "sat":
-            number = 6;
-            break;
-    }  
-
-    return number;
-}
-
+defaultBlocks();
 defaultTask();
 pointTime();
 dark();
 
+const selectFirst = () => colorSelector(document.querySelector(".list-task").firstElementChild);
+selectFirst();
+
 document.addEventListener("DOMContentLoaded", e => {
-    addTask(".add-btn");
+    
     deleteTask(".delete-btn");
     edit(".edit-btn");
-    btnActive(".btnActive")
     selectBlock();
-    trick();
     addTaskContent();
-    clean();
     deleteAll();
+});
+
+ document.addEventListener("click", e => {
+    
+    if(e.target.matches(".add-btn")) {
+        addTask(e);
+        selectFirst();
+    }
+    if(e.target.matches(".container-task")) colorSelector(e.target);
+    if(e.target.matches(".btnActive"))  e.target.classList.toggle("active");
+
+    if(e.target.matches(".clean-btn")){
+
+        const $blocks = document.querySelectorAll(".blocks div");
+    
+        if($blocks.length > 0){
+            $blocks.forEach(el => {
+                let nameTask = el.classList[1];
+                el.classList.remove(nameTask);
+                el.style.background = "var(--second-color)";
+            });
+        }
+        localStorage.removeItem("blocks");
+    }
+
+    if(e.target.matches(".trick")){
+        
+        if($trick.classList.contains("select-trick")){
+            $trick.classList.remove("select-trick");
+
+            let $first = document.querySelector(".first");
+            if($first != null) $first.classList.remove("first");
+        }
+        else{
+            $trick.classList.add("select-trick");
+        }
+    }
+
+});
+
+document.addEventListener("input", e => {
+
+    if(e.target.matches(".name-input")) e.target.classList.remove("color-red");
+    if(e.target.matches(".color-input")) e.target.classList.remove("color-red");
 });

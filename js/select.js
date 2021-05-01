@@ -1,10 +1,13 @@
-import { numbeToDay, dayToNumber, setBlocksStorage } from "./main.js";
+import { setBlocksStorage } from "./main.js";
 
 
 export default function selectBlock() {
  
     const $blocks = document.querySelectorAll(".blocks div");
-
+    const numberToDay = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"],
+        dayToNumber = day => numberToDay.findIndex( el => el == day);
+        
+       
     $blocks.forEach(el => {
 
         let day = el.classList[0].slice(0,3);
@@ -50,7 +53,7 @@ export default function selectBlock() {
 
                         for(let j = numberFirst; j <= numberSecond; j++){
 
-                            let $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                            let $blockTrick = document.querySelector(`.${numberToDay[i]}${j}`);
                             
                             if($first != $blockTrick) $blockTrick.style.backgroundColor= color;
                         }
@@ -99,7 +102,7 @@ export default function selectBlock() {
 
                             for(let j = numberFirst; j <= numberSecond; j++){
 
-                                const $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                                const $blockTrick = document.querySelector(`.${numberToDay[i]}${j}`);
                             
                                 if($first != $blockTrick){ 
                                     $blockTrick.style.backgroundColor= "var(--second-color)";
@@ -213,7 +216,7 @@ export default function selectBlock() {
 
                             for(let j = numberFirst; j <= numberSecond; j++){
 
-                                const $blockTrick = document.querySelector(`.${numbeToDay(i)}${j}`);
+                                const $blockTrick = document.querySelector(`.${numberToDay[i]}${j}`);
 
                                 if($blockTrick.classList.length == 3){
                                     if($blockTrick.classList[1] != "point"){

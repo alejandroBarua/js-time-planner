@@ -52,7 +52,6 @@ export default function deleteTask(deleteBtn) {
                     el.style.background = "var(--second-color)";
                 });
             }
-
             setBlocksStorage();
         }
     });

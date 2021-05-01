@@ -1,4 +1,4 @@
-import { colorSelector, numbeToDay,getBlockStorage } from "./main.js";
+import { getBlockStorage } from "./main.js";
 
 export default function defaultTask() {
 
@@ -36,71 +36,21 @@ export default function defaultTask() {
 
     taskContent.forEach(el => {
 
-        let $div = document.createElement("div"),
-            $button = document.createElement("button"),
-            $divBtn = document.createElement("div"),
-            $img = document.createElement("img"),
-            $p = document.createElement("p");
-        
-        $div.style.backgroundColor = el.color;
-        $div.classList.add(el.name.replace(/ /g, ""));
-        $div.addEventListener("click", () => colorSelector($div));
+        const $templateTask = document.querySelector(".template-task").content;
 
-        $button.textContent = "x";
-        $button.classList.add("delete-btn");
-        $p.textContent = el.name;
-        $img.setAttribute("src", "images/colors.png");
-        $img.classList.add("edit-btn");
+        $templateTask.querySelector(".container-task").style.backgroundColor = el.color;
+        $templateTask.querySelector(".container-task").classList.add(el.name.replace(/ /g, ""));
+        $templateTask.querySelector(".container-task").dataset.name = el.name;
+        $templateTask.querySelector("p").textContent = el.name;
+        $templateTask.querySelector(".edit-btn").dataset.name = el.name;
+        $templateTask.querySelector(".edit-btn").dataset.color = el.color;
+        $templateTask.querySelector(".delete-btn").dataset.name = el.name;
 
-        $divBtn.appendChild($img);
-        $divBtn.appendChild($button);
-        $div.appendChild($p);
-        $div.appendChild($divBtn);
-
-        $fragment.appendChild($div);
+        let $clone = document.importNode($templateTask, true);
+        $fragment.appendChild($clone)
     });
-
     
     $listTask.appendChild($fragment);
-
-    let taskList = JSON.parse(localStorage.getItem("tasks"));
-    if(taskList.length != 0) colorSelector($listTask.firstElementChild);
-
-    defaultBlocks();
     if(window.localStorage.blocks != undefined) getBlockStorage();
-
 }
 
-function defaultBlocks() {
-    
-    const $containerBlocks = document.querySelector(".container-blocks"),
-        $fragment = document.createDocumentFragment();
-    
-    let $blocksNumber = document.createElement("div");
-    $blocksNumber.classList.add("numbers");
-    for(let i = 0; i < 24; i++){
-        let $div = document.createElement("div");
-        $div.classList.add(`id${i}`);
-        $div.textContent = i;
-        $blocksNumber.appendChild($div);
-    }
-    $fragment.appendChild($blocksNumber);
-
-
-    for(let i = 0; i < 7; i++){
-
-        let $blocks = document.createElement("div");
-        $blocks.classList.add("blocks");
-    
-        for(let j = 0; j < 24; j++){
-            let $div = document.createElement("div");
-            $div.classList.add(`${numbeToDay(i)}${j}`);
-            $blocks.appendChild($div);
-        }
-    
-        $fragment.appendChild($blocks);
-    }
-
-    $containerBlocks.appendChild($fragment);
-
-}

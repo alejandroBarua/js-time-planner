@@ -1,12 +1,11 @@
-import { numbeToDay } from "./main.js";
-
 export default function pointTime() {
     
     setInterval(() => {
     
         let date = new Date();
+        const numberToDay = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
     
-        let day = numbeToDay(date.getDay());
+        let day = numberToDay[date.getDay()];
 
         let $block = document.querySelector(`.${day}${date.getHours()}`);
         $block.classList.add("point");
