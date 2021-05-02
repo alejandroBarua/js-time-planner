@@ -13,20 +13,19 @@ const colorSelector = ($div) => {
 
     if($div == null) return;
     
-    let $divPrev = document.querySelector(".select-task");
+    const $divPrev = document.querySelector(".select-task");
     if($divPrev != null) $divPrev.classList.remove("select-task");
                 
     $div.classList.add("select-task");
 
-    let $first = document.querySelector(".first");
+    const $first = document.querySelector(".first");
     if($first != null){
-
         $first.style.backgroundColor = "rgb(219, 216, 216)";
         $first.classList.remove("first");
     }
 }
 
-function setBlocksStorage() {
+const setBlocksStorage = () => {
     
     const $divs = document.querySelectorAll(".blocks div");
     let blocks = new Array();
@@ -39,7 +38,7 @@ function setBlocksStorage() {
     localStorage.setItem("blocks", JSON.stringify(blocks));
 }
 
-function getBlockStorage() {
+const getBlockStorage = () => {
     
         let blocks = JSON.parse(localStorage.getItem("blocks"));
 
@@ -52,8 +51,21 @@ function getBlockStorage() {
         });
 }
 
+const colorPalet = () => {
+    
+    const $fragment = document.createDocumentFragment(),
+        $colors = document.querySelector(".colors"),
+        colors = ["#c43e4b","#e38690", "#f04732", "#f89b31", "#f9ea2c", "#c4e61b", "#5bb31f", "#1292d1", "#3074fc", "#4f4ea9", "#a45bb4", "#000000"];
 
-function addContent() {
+    colors.forEach(el => {
+        const $div = document.createElement("div");
+        $div.style.backgroundColor = el;
+        $fragment.appendChild($div);
+    }); 
+    $colors.appendChild($fragment);
+}
+
+const addContent = () => {
 
     const content = `
         <div>
@@ -67,45 +79,16 @@ function addContent() {
 
         </div>`;
 
-    const $addTask = document.querySelector(".addTask");
-    $addTask.innerHTML = content;
+    document.querySelector(".addTask").innerHTML = content;
 
     const $escape = document.querySelector(".escape"),
         $dark = document.querySelector(".dark-btn");
 
     if($dark.classList.contains("active")) $escape.classList.add("white");
-    document.querySelector(".name-input").focus();
     colorPalet();
 }
 
-function colorPalet() {
-    
-    const colors = ["#c43e4b","#e38690", "#f04732", "#f89b31", "#f9ea2c", "#c4e61b", "#5bb31f", "#1292d1", "#3074fc", "#4f4ea9", "#a45bb4", "#000000"];
-
-    const $fragment = document.createDocumentFragment(),
-        $colors = document.querySelector(".colors");
-
-    colors.forEach(el => {
-
-        const $div = document.createElement("div");
-        const $inputColor = document.querySelector(".color-input");
-
-        $div.style.backgroundColor = el;
-        $div.addEventListener("click", () => {
-            $inputColor.value = el;
-            $inputColor.classList.remove("color-red");
-            const $inputText = document.querySelector(".name-input");
-            $inputText.focus();
-            $inputText.classList.remove("color-red");
-        });
-
-        $fragment.appendChild($div);
-    }); 
-
-    $colors.appendChild($fragment);
-}
-
-function rgbToHex(rgb) {
+const rgbToHex = (rgb) => {
     
     rgb = rgb.slice(4, ).split(",");
     
@@ -126,18 +109,17 @@ function rgbToHex(rgb) {
     return `rgb(${r}, ${g}, ${b})`;
 } */
 
-defaultBlocks();
-defaultTask(getBlockStorage);
-//pointTime();
+const $firstTask =  document.querySelector(".list-task").firstElementChild,
+selectFirst = () => colorSelector($firstTask);
+
 dark();
 
-const $firstTask =  document.querySelector(".list-task").firstElementChild,
-    selectFirst = () => colorSelector($firstTask);
-selectFirst();
-
 document.addEventListener("DOMContentLoaded", e => {
-    
-    
+        
+    defaultBlocks();
+    defaultTask(getBlockStorage);
+    //pointTime();
+    selectFirst();
     edit(".edit-btn", addContent, rgbToHex);
     selectBlock(setBlocksStorage);
     addTaskContent(addContent);
@@ -148,6 +130,17 @@ document.addEventListener("DOMContentLoaded", e => {
     if(e.target.matches(".btnActive"))  e.target.classList.toggle("active");
     if(e.target.matches(".container-task")) colorSelector(e.target);
     if(e.target.matches(".delete-btn")) deleteTask(e, colorSelector, setBlocksStorage);
+
+    if(e.target.matches(".colors > div")) {
+
+        const $inputColor = document.querySelector(".color-input"),
+            $inputText = document.querySelector(".name-input");
+
+            $inputColor.value = rgbToHex(e.target.style.backgroundColor);
+            $inputColor.classList.remove("color-red");
+            $inputText.focus();
+            $inputText.classList.remove("color-red");
+    }
     
     if(e.target.matches(".deleteAll-btn")) {
         deleteAll();
@@ -174,11 +167,13 @@ document.addEventListener("DOMContentLoaded", e => {
     }
 
     if(e.target.matches(".trick")){
+
+        const $trick = document.querySelector(".trick");
         
         if($trick.classList.contains("select-trick")){
             $trick.classList.remove("select-trick");
 
-            let $first = document.querySelector(".first");
+            const $first = document.querySelector(".first");
             if($first != null) $first.classList.remove("first");
         }
         else{
@@ -190,8 +185,4 @@ document.addEventListener("DOMContentLoaded", e => {
 
 });
 
-document.addEventListener("input", e => {
-
-    if(e.target.matches(".name-input")) e.target.classList.remove("color-red");
-    if(e.target.matches(".color-input")) e.target.classList.remove("color-red");
-});
+document.addEventListener("input", e => e.target.classList.remove("color-red"));

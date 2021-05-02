@@ -1,4 +1,4 @@
-export default function defaultTask() {
+export default function defaultTask(getBlockStorage) {
 
     let taskContent;
 
