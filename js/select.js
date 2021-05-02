@@ -1,7 +1,4 @@
-import { setBlocksStorage } from "./main.js";
-
-
-export default function selectBlock() {
+export default function selectBlock(setBlocksStorage) {
  
     const $blocks = document.querySelectorAll(".blocks div");
     const numberToDay = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"],

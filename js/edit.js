@@ -1,6 +1,4 @@
-import { addContent, rgbToHex } from "./main.js";
-
-export default function edit(editBtn) {
+export default function edit(editBtn, addContent, rgbToHex) {
     
     document.addEventListener("click", e => {
 

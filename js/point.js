@@ -7,7 +7,7 @@ export default function pointTime() {
     
         let day = numberToDay[date.getDay()];
 
-        let $block = document.querySelector(`.${day}${date.getHours()}`);
+        const $block = document.querySelector(`.${day}${date.getHours()}`);
         $block.classList.add("point");
 
         if($block.classList.length == 3){
@@ -27,7 +27,7 @@ export default function pointTime() {
             document.querySelector(".now h2").textContent = "";
         }
 
-        let $blockAnt = document.querySelector(`.${day}${date.getHours()-1}`);
+        const $blockAnt = document.querySelector(`.${day}${date.getHours()-1}`);
         if($blockAnt != null) $blockAnt.classList.remove("point");
     
     }, 1000);

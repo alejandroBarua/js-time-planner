@@ -1,6 +1,4 @@
-import { setBlocksStorage, rgbToHex } from "./main.js";
-
-export default function addTask(e) {
+export default function addTask(e, setBlocksStorage, rgbToHex) {
     
     const $inputName = document.querySelector(".name-input"),
         $inputColor = document.querySelector(".color-input"),
@@ -53,7 +51,6 @@ export default function addTask(e) {
                 textAnt = $task.classList[1];
             }
 
-
             $task.classList.remove(textAnt);
 
             $task.children[0].textContent= text;
@@ -61,23 +58,6 @@ export default function addTask(e) {
             $task.classList.add(text);
             $task.classList.remove("edit");
                 
-            let $blocks = document.querySelectorAll(".blocks div"); 
-            let history = new Array();
-                
-            $blocks.forEach(el => {
-                    
-                if(el.classList.contains(textAnt)){
-                    history.push(el.classList[0]);
-                }
-            });
-                
-            history.forEach(el => {
-                let $block = document.querySelector(`.${el}`);
-                $block.classList.remove(textAnt);
-                $block.classList.add(text);
-                $block.style.backgroundColor = color;
-            });
-
             taskContent.forEach(el => {
                 if(el.name == textAnt) el.name = text;
             });
@@ -92,7 +72,6 @@ export default function addTask(e) {
                 $templateTask = document.querySelector(".template-task").content;
 
             $templateTask.querySelector(".container-task").style.backgroundColor = color;
-            $templateTask.querySelector(".container-task").classList.add(text.replace(/ /g, ""));
             $templateTask.querySelector(".container-task").dataset.name = text;
             $templateTask.querySelector("p").textContent = text;
             $templateTask.querySelector(".edit-btn").dataset.name = text;

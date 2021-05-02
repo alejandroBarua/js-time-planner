@@ -1,6 +1,4 @@
-import { addContent } from "./main.js";
-
-export default function addTaskContent() {
+export default function addTaskContent(addContent) {
     
     const $addTaskBtn = document.querySelector(".addTask-btn"),
         $addTask = document.querySelector(".addTask");

@@ -9,7 +9,9 @@ import deleteTask from "./delete.js";
 import deleteAll from "./deleteAll.js";
 import defaultBlocks from "./defaultBlocks.js";
 
-export const colorSelector = ($div) => {
+const colorSelector = ($div) => {
+
+    if($div == null) return;
     
     let $divPrev = document.querySelector(".select-task");
     if($divPrev != null) $divPrev.classList.remove("select-task");
@@ -24,7 +26,7 @@ export const colorSelector = ($div) => {
     }
 }
 
-export function setBlocksStorage() {
+function setBlocksStorage() {
     
     const $divs = document.querySelectorAll(".blocks div");
     let blocks = new Array();
@@ -37,7 +39,7 @@ export function setBlocksStorage() {
     localStorage.setItem("blocks", JSON.stringify(blocks));
 }
 
-export function getBlockStorage() {
+function getBlockStorage() {
     
         let blocks = JSON.parse(localStorage.getItem("blocks"));
 
@@ -51,7 +53,7 @@ export function getBlockStorage() {
 }
 
 
-export function addContent() {
+function addContent() {
 
     const content = `
         <div>
@@ -72,7 +74,7 @@ export function addContent() {
         $dark = document.querySelector(".dark-btn");
 
     if($dark.classList.contains("active")) $escape.classList.add("white");
-    
+    document.querySelector(".name-input").focus();
     colorPalet();
 }
 
@@ -103,7 +105,7 @@ function colorPalet() {
     $colors.appendChild($fragment);
 }
 
-export function rgbToHex(rgb) {
+function rgbToHex(rgb) {
     
     rgb = rgb.slice(4, ).split(",");
     
@@ -125,30 +127,37 @@ export function rgbToHex(rgb) {
 } */
 
 defaultBlocks();
-defaultTask();
-pointTime();
+defaultTask(getBlockStorage);
+//pointTime();
 dark();
 
-const selectFirst = () => colorSelector(document.querySelector(".list-task").firstElementChild);
+const $firstTask =  document.querySelector(".list-task").firstElementChild,
+    selectFirst = () => colorSelector($firstTask);
 selectFirst();
 
 document.addEventListener("DOMContentLoaded", e => {
     
-    deleteTask(".delete-btn");
-    edit(".edit-btn");
-    selectBlock();
-    addTaskContent();
-    deleteAll();
+    
+    edit(".edit-btn", addContent, rgbToHex);
+    selectBlock(setBlocksStorage);
+    addTaskContent(addContent);
 });
 
  document.addEventListener("click", e => {
     
+    if(e.target.matches(".btnActive"))  e.target.classList.toggle("active");
+    if(e.target.matches(".container-task")) colorSelector(e.target);
+    if(e.target.matches(".delete-btn")) deleteTask(e, colorSelector, setBlocksStorage);
+    
+    if(e.target.matches(".deleteAll-btn")) {
+        deleteAll();
+        addContent();
+    }
+    
     if(e.target.matches(".add-btn")) {
-        addTask(e);
+        addTask(e, setBlocksStorage, rgbToHex);
         selectFirst();
     }
-    if(e.target.matches(".container-task")) colorSelector(e.target);
-    if(e.target.matches(".btnActive"))  e.target.classList.toggle("active");
 
     if(e.target.matches(".clean-btn")){
 
@@ -176,6 +185,8 @@ document.addEventListener("DOMContentLoaded", e => {
             $trick.classList.add("select-trick");
         }
     }
+    
+
 
 });
 

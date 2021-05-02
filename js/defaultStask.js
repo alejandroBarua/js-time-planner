@@ -1,5 +1,3 @@
-import { getBlockStorage } from "./main.js";
-
 export default function defaultTask() {
 
     let taskContent;
@@ -32,14 +30,12 @@ export default function defaultTask() {
     }
 
     let $fragment = document.createDocumentFragment(),
-        $listTask = document.querySelector(".list-task");
+        $listTask = document.querySelector(".list-task"),
+        $templateTask = document.querySelector(".template-task").content;
 
     taskContent.forEach(el => {
 
-        const $templateTask = document.querySelector(".template-task").content;
-
         $templateTask.querySelector(".container-task").style.backgroundColor = el.color;
-        $templateTask.querySelector(".container-task").classList.add(el.name.replace(/ /g, ""));
         $templateTask.querySelector(".container-task").dataset.name = el.name;
         $templateTask.querySelector("p").textContent = el.name;
         $templateTask.querySelector(".edit-btn").dataset.name = el.name;
@@ -47,7 +43,7 @@ export default function defaultTask() {
         $templateTask.querySelector(".delete-btn").dataset.name = el.name;
 
         let $clone = document.importNode($templateTask, true);
-        $fragment.appendChild($clone)
+        $fragment.appendChild($clone);
     });
     
     $listTask.appendChild($fragment);
